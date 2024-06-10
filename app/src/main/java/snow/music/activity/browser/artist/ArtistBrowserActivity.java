@@ -1,5 +1,6 @@
 package snow.music.activity.browser.artist;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -12,7 +13,9 @@ import java.util.List;
 
 import snow.music.R;
 import snow.music.activity.ListActivity;
+import snow.music.activity.browser.album.AlbumBrowserActivity;
 import snow.music.activity.detail.artist.ArtistDetailActivity;
+import snow.music.activity.localmusic.LocalMusicActivity;
 import snow.music.service.AppPlayerService;
 import snow.music.util.PlayerUtil;
 import snow.player.lifecycle.PlayerViewModel;
@@ -35,6 +38,25 @@ public class ArtistBrowserActivity extends ListActivity {
 
         rvArtistBrowser = findViewById(R.id.rvArtistBrowser);
         initRecyclerView();
+    }
+    public void onNavigate(View view) {
+        Class<?> activityClass;
+        switch (view.getId()) {
+            case R.id.btnFavorite:
+                activityClass = LocalMusicActivity.class;
+                break;
+            case R.id.btnAlbums:
+                activityClass = AlbumBrowserActivity.class;
+                break;
+            case R.id.btnArtists:
+                activityClass = ArtistBrowserActivity.class;
+                break;
+            default:
+                return;
+        }
+        Intent intent = new Intent(this, activityClass);
+        startActivity(intent);
+        finish();  // 关闭当前界面
     }
 
     private void initRecyclerView() {

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- 图片背景 -->
-    <item>
-        <bitmap
-            android:src="@drawable/wood"
-            android:tileMode="disabled"
-            android:gravity="fill"/>
-    </item>
-</layer-list>
+<!-- res/drawable/rounded_rectangle.xml -->
+<!-- res/drawable/rounded_rectangle.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#ffffff "/> <!-- 设置背景为浅灰色 -->
+    <corners android:radius="20dp"/> <!-- 圆角大小 -->
+    <!-- 边框颜色已去掉 -->
+</shape>
 

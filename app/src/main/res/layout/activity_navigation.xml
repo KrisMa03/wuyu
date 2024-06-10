@@ -212,7 +212,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/item_local_music"
+                            android:text="本地音乐"
                             android:textSize="17sp" />
 
                     </LinearLayout>
@@ -232,9 +232,9 @@
                         <ImageView
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:contentDescription="@string/des_history"
+                            android:contentDescription="喜欢"
                             android:scaleType="centerInside"
-                            app:srcCompat="@drawable/ic_history" />
+                            app:srcCompat="@drawable/ic_favorite_true" />
 
                         <Space
                             android:layout_width="0dp"
@@ -243,7 +243,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/item_history"
+                            android:text="我的收藏"
                             android:textSize="17sp" />
 
                     </LinearLayout>
@@ -274,7 +274,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/item_music_list"
+                            android:text="我的歌单"
                             android:textSize="17sp" />
 
                     </LinearLayout>
@@ -287,7 +287,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:gravity="center"
-                    android:onClick="@{navViewModel::navigateToFavorite}"
+                    android:onClick="@{navViewModel::navigateToHistory}"
                     android:orientation="horizontal"
                     android:layout_marginBottom="0dp"
                     android:paddingTop="0dp">
@@ -375,6 +375,7 @@
                         android:id="@+id/ivDisk"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:padding="4dp"
                         android:contentDescription="@string/des_album_icon"
                         android:onClick="@{navViewModel.navigateToPlayer}"
                          />

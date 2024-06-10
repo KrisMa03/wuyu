@@ -6,13 +6,18 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import snow.music.R;
 import snow.music.activity.ListActivity;
+import snow.music.activity.browser.album.AlbumBrowserActivity;
+import snow.music.activity.browser.artist.ArtistBrowserActivity;
+import snow.music.activity.favorite.FavoriteActivity;
 import snow.music.activity.search.SearchActivity;
 import snow.music.dialog.MessageDialog;
 import snow.music.dialog.ScannerDialog;
@@ -46,7 +51,30 @@ public class LocalMusicActivity extends ListActivity {
         if (noPermission() && localMusicIsEmpty() && shouldShowRequestPermissionRationale()) {
             scanMusic();
         }
+        Button btnSongs = findViewById(R.id.btnFavorite);
+
+            btnSongs.setSelected(true);
     }
+    public void onNavigate(View view) {
+        Class<?> activityClass;
+        switch (view.getId()) {
+            case R.id.btnFavorite:
+                activityClass = LocalMusicActivity.class;
+                break;
+            case R.id.btnAlbums:
+                activityClass = AlbumBrowserActivity.class;
+                break;
+            case R.id.btnArtists:
+                activityClass = ArtistBrowserActivity.class;
+                break;
+            default:
+                return;
+        }
+        Intent intent = new Intent(this, activityClass);
+        startActivity(intent);
+        finish();  // 关闭当前界面
+    }
+
 
     private void initPlayerClient() {
         ViewModelProvider viewModelProvider = new ViewModelProvider(this);

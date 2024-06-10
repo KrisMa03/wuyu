@@ -58,7 +58,6 @@
             android:background="@color/colorDivider" />
 
     </FrameLayout>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMusicListBrowser"
         android:layout_width="match_parent"
