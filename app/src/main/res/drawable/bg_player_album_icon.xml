@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 主体银白色背景 -->
+    <item>
+        <shape android:shape="oval">
+            <gradient
+                android:type="radial"
+                android:centerX="50%"
+                android:centerY="50%"
+                android:startColor="#F0F0F0"
+            android:centerColor="#D0D0D0"
+            android:endColor="#A0A0A0"
+            android:gradientRadius="100%"/>
+        </shape>
+    </item>
+
+    <!-- 线性渐变模拟拉丝效果 -->
+    <!-- 通过重复添加线性渐变层，可以模拟更细致的拉丝纹理 -->
+    <item>
+        <shape android:shape="oval">
+            <gradient
+                android:type="linear"
+                android:angle="0"
+                android:startColor="#E0E0E0"
+            android:endColor="#FFFFFF"
+            android:useLevel="false" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="oval">
+            <gradient
+                android:type="linear"
+                android:angle="90"
+                android:startColor="#FFFFFF"
+            android:endColor="#E0E0E0"
+            android:useLevel="false" />
+        </shape>
+    </item>
+
+    <!-- 额外的高光反射效果 -->
+    <item>
+        <shape android:shape="oval">
+            <gradient
+                android:type="radial"
+                android:centerX="50%"
+                android:centerY="30%"
+            android:startColor="#FFFFFF"
+            android:endColor="#00FFFFFF"
+            android:gradientRadius="20%" />
+        </shape>
+    </item>
+</layer-list>
