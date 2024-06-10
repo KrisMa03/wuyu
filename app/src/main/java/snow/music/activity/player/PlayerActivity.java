@@ -17,6 +17,8 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import snow.music.GlideApp;
 import snow.music.R;
 import snow.music.activity.BaseActivity;
+import snow.music.activity.detail.album.AlbumDetailActivity;
+import snow.music.activity.detail.artist.ArtistDetailActivity;
 import snow.music.activity.navigation.NavigationActivity;
 import snow.music.databinding.ActivityPlayerBinding;
 import snow.music.dialog.AddToMusicListDialog;
@@ -131,15 +133,20 @@ public class PlayerActivity extends BaseActivity {
         }
 
         BottomMenuDialog bottomMenuDialog = new BottomMenuDialog.Builder(this)
-                .setTitle(musicItem.getTitle())
-                .addMenuItem(R.drawable.ic_menu_item_add, R.string.menu_item_add_to_music_list)
-                .addMenuItem(R.drawable.ic_menu_item_rington, R.string.menu_item_set_as_ringtone)
+                .setTitle(musicItem.getTitle()) // 设置对话框标题为歌曲标题
+                .addMenuItem(R.drawable.ic_menu_item_add, musicItem.getArtist()) // 添加一个菜单项显示歌手名字
+                .addMenuItem(R.drawable.ic_menu_item_add, musicItem.getAlbum()) // 添加一个菜单项显示专辑名字
+                .addMenuItem(R.drawable.ic_menu_item_add, R.string.menu_item_add_to_music_list) // 添加到音乐列表
+                .addMenuItem(R.drawable.ic_menu_item_rington, R.string.menu_item_set_as_ringtone) // 设置为铃声
                 .setOnMenuItemClickListener((dialog, position) -> {
                     dialog.dismiss();
-
-                    if (position == 0) {
+                    if (position == 0) { // 点击歌手名字
+                        ArtistDetailActivity.start(this, musicItem.getArtist());
+                    } else if (position == 1) { // 点击专辑名字
+                        AlbumDetailActivity.start(this, musicItem.getAlbum());
+                    } else if (position == 2) {
                         addToMusicListDialog(musicItem);
-                    } else if (position == 1) {
+                    } else if (position == 3) {
                         setAsRingtone(musicItem);
                     }
                 })

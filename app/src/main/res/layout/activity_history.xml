@@ -32,7 +32,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/title_history"
-                android:textSize="@dimen/action_bar_title_text_size" />
+                android:gravity="center"
+                android:textSize="20sp"/>
 
             <ImageButton
                 android:id="@+id/btnClearHistory"

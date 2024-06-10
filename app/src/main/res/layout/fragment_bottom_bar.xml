@@ -27,6 +27,7 @@
             android:layout_height="56dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
+            android:background="@color/colorDivider"
             android:paddingLeft="8dp"
             android:paddingRight="8dp">
 

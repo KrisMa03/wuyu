@@ -12,13 +12,13 @@
     <dimen name="snow_ui_band_chart_default_grid_line_width">1dp</dimen>
     <dimen name="snow_ui_band_chart_dash_length">8dp</dimen>
     <dimen name="action_bar_height">56dp</dimen>
-    <dimen name="action_bar_title_text_size">18sp</dimen>
+    <dimen name="action_bar_title_text_size">20sp</dimen>
     <dimen name="snow_notif_icon_size_big">96dp</dimen>
     <dimen name="min_slide_distance">20dp</dimen>
 
     <dimen name="dialog_title_height">60dp</dimen>
     <dimen name="dialog_title_text_size">17sp</dimen>
-    <dimen name="dialog_item_text_size">15sp</dimen>
+    <dimen name="dialog_item_text_size">16sp</dimen>
     <dimen name="dialog_item_height">56dp</dimen>
     <dimen name="dialog_content_height">120dp</dimen>
 
