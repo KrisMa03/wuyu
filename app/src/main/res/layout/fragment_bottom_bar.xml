@@ -24,10 +24,10 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="76dp"
+            android:background="#7068DCD2"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:background="@color/colorDivider"
             android:paddingLeft="8dp"
             android:paddingRight="8dp">
 
@@ -37,8 +37,8 @@
 
             <ImageView
                 android:id="@+id/ivIcon"
-                android:layout_width="@dimen/player_bottom_bar_icon_size"
-                android:layout_height="@dimen/player_bottom_bar_icon_size"
+                android:layout_width="69dp"
+                android:layout_height="63dp"
                 android:contentDescription="@string/des_album_icon"
                 android:onClick="@{bottomBarViewModel.startPlayerActivity}"
                 android:src="@mipmap/ic_bottom_bar_default_icon" />
