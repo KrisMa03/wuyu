@@ -15,18 +15,13 @@
         android:layout_marginRight="16dp"
         android:layout_weight="1"
         android:singleLine="true"
-        android:textSize="16sp"
+        android:textSize="18sp"
         tools:text="@string/app_name" />
 
     <Button
         android:id="@+id/btnPlay"
-        android:layout_width="wrap_content"
-        android:layout_height="22dp"
-        android:background="@drawable/bg_button_play"
-        android:minWidth="48dp"
-        android:text="@string/button_text_play"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white"
-        android:textSize="12sp" />
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/ic_bottom_bar_play"/>
 
 </LinearLayout>

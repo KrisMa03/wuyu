@@ -5,7 +5,7 @@
         <shape android:shape="line">
             <stroke
                 android:width="5dp"
-                android:color="@color/deep_purple_100" />
+                android:color="#4B68DCD2" />
         </shape>
     </item>
 
@@ -14,7 +14,7 @@
         <shape android:shape="line">
             <stroke
                 android:width="4dp"
-                android:color="@color/deep_purple_100" />
+                android:color="#6368DCD2" />
         </shape>
     </item>
 
@@ -24,7 +24,7 @@
             <shape android:shape="line">
                 <stroke
                     android:width="4dp"
-                    android:color="@color/deep_purple_400" />
+                    android:color="#9C68DCD2" />
             </shape>
         </clip>
     </item>

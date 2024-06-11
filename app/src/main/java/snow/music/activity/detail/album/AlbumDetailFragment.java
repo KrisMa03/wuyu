@@ -86,8 +86,8 @@ public class AlbumDetailFragment extends BaseMusicListFragment {
         BottomDialog bottomDialog = new BottomMenuDialog.Builder(requireContext())
                 .setTitle(music.getTitle())
                 .addMenuItem(R.drawable.ic_menu_item_next_play, R.string.menu_item_next_play)
-                .addMenuItem(favoriteIconRes, favoriteTitleRes)
                 .addMenuItem(R.drawable.ic_menu_item_add, R.string.menu_item_add_to_music_list)
+                .addMenuItem(favoriteIconRes, favoriteTitleRes)
                 .addMenuItem(R.drawable.ic_menu_item_rington, R.string.menu_item_set_as_ringtone)
                 .setOnMenuItemClickListener((dialog, position) -> {
                     dialog.dismiss();

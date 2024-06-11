@@ -19,7 +19,7 @@
         android:layout_weight="1"
         android:ellipsize="middle"
         android:singleLine="true"
-        android:textSize="@dimen/dialog_item_text_size"
+        android:textSize="18sp"
         tools:text="@string/app_name" />
 
     <ImageView

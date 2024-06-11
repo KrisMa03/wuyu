@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal"
-        android:padding="24dp">
+        >
 
         <Button
             android:id="@+id/btnNegative"
@@ -64,10 +64,6 @@
             android:textAllCaps="false"
             android:textSize="@dimen/dialog_button_text_size" />
 
-        <Space
-            android:id="@+id/space"
-            android:layout_width="16dp"
-            android:layout_height="0dp" />
 
         <Button
             android:id="@+id/btnPositive"

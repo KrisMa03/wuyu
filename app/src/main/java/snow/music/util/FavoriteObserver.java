@@ -15,7 +15,7 @@ import snow.music.store.MusicStore;
 import snow.player.audio.MusicItem;
 
 /**
- * 帮助实时监听指定歌曲的 “我喜欢” 状态。
+ * 帮助实时监听指定歌曲的 “我的收藏” 状态。
  * <p>
  * 当不在需要 {@link FavoriteObserver} 对象时，请务必调用 {@link #unsubscribe()} 取消订阅，否则会导致内存泄漏。
  */
@@ -32,7 +32,7 @@ public class FavoriteObserver {
     /**
      * 创建一个 {@link FavoriteObserver} 对象。
      *
-     * @param listener 歌曲的 “我喜欢” 状态监听器，不能为 null
+     * @param listener 歌曲的 “我的收藏” 状态监听器，不能为 null
      */
     public FavoriteObserver(@NonNull OnFavoriteStateChangeListener listener) {
         Preconditions.checkNotNull(listener);
@@ -66,16 +66,16 @@ public class FavoriteObserver {
     }
 
     /**
-     * 歌曲是否处于 “我喜欢” 状态。
+     * 歌曲是否处于 “我的收藏” 状态。
      *
-     * @return 如果歌曲是 “我喜欢”，则返回 true，否则返回 false
+     * @return 如果歌曲是 “我的收藏”，则返回 true，否则返回 false
      */
     public synchronized boolean isFavorite() {
         return mFavorite;
     }
 
     /**
-     * 开始订阅歌曲的 “我喜欢” 状态。
+     * 开始订阅歌曲的 “我的收藏” 状态。
      */
     public void subscribe() {
         if (mSubscribed) {
@@ -87,7 +87,7 @@ public class FavoriteObserver {
     }
 
     /**
-     * 取消订阅歌曲的 “我喜欢” 状态。
+     * 取消订阅歌曲的 “我的收藏” 状态。
      */
     public void unsubscribe() {
         mSubscribed = false;
@@ -135,15 +135,15 @@ public class FavoriteObserver {
     }
 
     /**
-     * 歌曲的 “我喜欢” 状态监听器。
+     * 歌曲的 “我的收藏” 状态监听器。
      */
     public interface OnFavoriteStateChangeListener {
         /**
-         * 该方法会在歌曲的 “我喜欢” 状态改变时调用。
+         * 该方法会在歌曲的 “我的收藏” 状态改变时调用。
          * <p>
          * 该回调方法会在应用程序主线程调用。
          *
-         * @param favorite 如果歌曲是 “我喜欢”，则该参数为 true，否则为 false
+         * @param favorite 如果歌曲是 “我的收藏”，则该参数为 true，否则为 false
          */
         void onFavoriteStateChanged(boolean favorite);
     }

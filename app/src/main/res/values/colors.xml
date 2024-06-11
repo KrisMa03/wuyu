@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@color/deep_purple_400</color>
-    <color name="colorPrimaryDark">@color/deep_purple_400</color>
-    <color name="colorAccent">@color/deep_purple_400</color>
+    <color name="colorPrimary">#C368DCD2</color>
+    <color name="colorPrimaryDark">#C368DCD2</color>
+    <color name="colorAccent">#C368DCD2</color>
 
     <color name="colorWindowBackground">@color/white</color>
 
@@ -10,8 +10,7 @@
     <color name="colorSecondaryText">@color/grey_500</color>
     <color name="colorTextDisabled">@color/grey_500</color>
 
-    <color name="colorMark">@color/deep_purple_400</color>
-
+    <color name="colorMark">#C368DCD2</color>
     <color name="colorRipple">@color/grey_400</color>
     <color name="colorPressed">@color/grey_200</color>
 
@@ -30,12 +29,12 @@
 
     <color name="colorInputBackground">@color/grey_100</color>
 
-    <color name="colorPositiveButtonText">@color/deep_purple_400</color>
+    <color name="colorPositiveButtonText">#C368DCD2</color>
     <color name="colorSettingSpace">@color/grey_100</color>
 
-    <color name="snow_ui_colorPrimary">#7E57C2</color>
-    <color name="snow_ui_colorPrimaryDark">#7E57C2</color>
-    <color name="snow_ui_colorAccent">#7E57C2</color>
+    <color name="snow_ui_colorPrimary">#C368DCD2</color>
+    <color name="snow_ui_colorPrimaryDark">#C368DCD2</color>
+    <color name="snow_ui_colorAccent">#C368DCD2</color>
     <color name="snow_ui_windowBackground">#FFFFFF</color>
     <color name="snow_ui_textColor">#212121</color>
     <color name="snow_ui_colorDivider">#E0E0E0</color>
@@ -47,9 +46,9 @@
     <color name="snow_ui_croller_main_circle_disable_color">#F5F5F5</color>
     <color name="snow_ui_croller_back_circle_color">#E0E0E0</color>
     <color name="snow_ui_croller_back_circle_disable_color">#BDBDBD</color>
-    <color name="snow_ui_croller_indicator_color">#7E57C2</color>
+    <color name="snow_ui_croller_indicator_color">#C368DCD2</color>
     <color name="snow_ui_croller_indicator_disable_color">#757575</color>
-    <color name="snow_ui_croller_progress_primary_color">#7E57C2</color>
+    <color name="snow_ui_croller_progress_primary_color">#C368DCD2</color>
     <color name="snow_ui_croller_progress_primary_disable_color">#757575</color>
     <color name="snow_ui_croller_progress_secondary_color">#BDBDBD</color>
     <color name="snow_ui_croller_progress_secondary_disable_color">#9E9E9E</color>
@@ -59,12 +58,12 @@
 
     <!-- EqualizerBandView -->
     <color name="snow_ui_colorLine">#E0E0E0</color>
-    <color name="snow_ui_colorProgress">#7E57C2</color>
+    <color name="snow_ui_colorProgress">#C368DCD2</color>
     <color name="snow_ui_colorProgressBackground">#EEEEEE</color>
     <color name="snow_ui_colorProgressDisable">#EEEEEE</color>
 
     <!-- BandChartView -->
-    <color name="snow_ui_lineColor">#7E57C2</color>
+    <color name="snow_ui_lineColor">#C368DCD2</color>
     <color name="snow_ui_lineDisableColor">#E0E0E0</color>
     <color name="snow_ui_gridLineColor">#E0E0E0</color>
 

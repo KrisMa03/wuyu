@@ -205,7 +205,7 @@ public class MusicListAdapter extends RecyclerView.Adapter<MusicListAdapter.View
             mTextColor = tvTitle.getCurrentTextColor();
             mSecondaryTextColor = tvArtistAndAlbum.getCurrentTextColor();
 
-            mSelectedTextColor = itemView.getResources().getColor(R.color.deep_purple_400);
+            mSelectedTextColor = itemView.getResources().getColor(R.color.black);
         }
 
         @Override

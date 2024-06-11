@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/playlist"
-                android:textSize="@dimen/dialog_title_text_size" />
+                android:textSize="20sp" />
 
             <ImageButton
                 android:id="@+id/btnLocate"

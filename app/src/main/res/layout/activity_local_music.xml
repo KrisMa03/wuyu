@@ -32,7 +32,19 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/title_local_music"
-                android:textSize="@dimen/action_bar_title_text_size" />
+                android:gravity="center"
+                android:textSize="20sp"/>
+
+            <ImageButton
+                android:id="@+id/btnSort"
+                android:layout_width="@dimen/image_button_size"
+                android:layout_height="@dimen/image_button_size"
+                android:background="@drawable/bg_button_48dp"
+                android:contentDescription="@string/des_sort_music_list"
+                android:onClick="onOptionMenuClicked"
+                android:scaleType="centerInside"
+                android:tint="@color/colorIconTint"
+                app:srcCompat="@drawable/ic_action_sort" />
 
             <ImageButton
                 android:id="@+id/btnSearch"
@@ -45,16 +57,6 @@
                 android:tint="@color/colorIconTint"
                 app:srcCompat="@drawable/ic_action_search" />
 
-            <ImageButton
-                android:id="@+id/btnSort"
-                android:layout_width="@dimen/image_button_size"
-                android:layout_height="@dimen/image_button_size"
-                android:background="@drawable/bg_button_48dp"
-                android:contentDescription="@string/des_sort_music_list"
-                android:onClick="onOptionMenuClicked"
-                android:scaleType="centerInside"
-                android:tint="@color/colorIconTint"
-                app:srcCompat="@drawable/ic_action_sort" />
 
             <ImageButton
                 android:id="@+id/btnScan"
@@ -96,7 +98,7 @@
             android:textColor="@drawable/button_text_color_selector"
             android:background="@drawable/button_selector"
             android:onClick="onNavigate"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/btnAlbums"
@@ -107,7 +109,7 @@
             android:textColor="@drawable/button_text_color_selector"
             android:background="@drawable/button_selector"
             android:onClick="onNavigate"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/btnArtists"
@@ -118,7 +120,7 @@
             android:textColor="@drawable/button_text_color_selector"
             android:background="@drawable/button_selector"
             android:onClick="onNavigate"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
     </LinearLayout>
     <androidx.fragment.app.FragmentContainerView

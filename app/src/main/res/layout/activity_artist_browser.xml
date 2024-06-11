@@ -35,7 +35,7 @@
                 android:layout_weight="1"
                 android:singleLine="true"
                 android:text="@string/title_artists"
-                android:textSize="@dimen/action_bar_title_text_size" />
+                android:textSize="20sp"/>
 
         </LinearLayout>
 
@@ -62,7 +62,7 @@
             android:textColor="@drawable/button_text_color_selector"
             android:background="@drawable/button_selector"
             android:onClick="onNavigate"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/btnAlbums"
@@ -73,7 +73,7 @@
             android:textColor="@drawable/button_text_color_selector"
             android:background="@drawable/button_selector"
             android:onClick="onNavigate"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/btnArtists"
@@ -84,7 +84,7 @@
             android:textColor="@drawable/button_text_color_selector"
             android:background="@drawable/button_selector"
             android:onClick="onNavigate"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView

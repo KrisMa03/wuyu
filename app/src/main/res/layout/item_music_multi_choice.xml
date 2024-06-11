@@ -29,6 +29,8 @@
             android:gravity="center"
             android:minWidth="48dp"
             android:singleLine="true"
+            android:textSize="20sp"
+            android:fontFamily="sans-serif"
             tools:text="1" />
 
         <LinearLayout
@@ -42,6 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
+                android:textSize="16sp"
                 tools:text="@string/snow_music_item_unknown_title" />
 
             <TextView

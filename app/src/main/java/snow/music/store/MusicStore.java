@@ -488,7 +488,7 @@ public class MusicStore {
     }
 
     /**
-     * 歌曲是否是 “我喜欢”
+     * 歌曲是否是 “我的收藏”
      */
     public synchronized boolean isFavorite(@NonNull Music music) {
         Preconditions.checkNotNull(music);
@@ -498,7 +498,7 @@ public class MusicStore {
     }
 
     /**
-     * 指定 musicId 的歌曲是否是 “我喜欢”
+     * 指定 musicId 的歌曲是否是 “我的收藏”
      */
     public synchronized boolean isFavorite(long musicId) {
         checkThread();
@@ -522,7 +522,7 @@ public class MusicStore {
     }
 
     /**
-     * 获取 “我喜欢” 歌单。
+     * 获取 “我的收藏” 歌单。
      */
     @NonNull
     public synchronized MusicList getFavoriteMusicList() {
@@ -531,7 +531,7 @@ public class MusicStore {
     }
 
     /**
-     * 将歌曲添加到 “我喜欢” 歌单。
+     * 将歌曲添加到 “我的收藏” 歌单。
      */
     public synchronized void addToFavorite(@NonNull Music music) {
         Preconditions.checkNotNull(music);
@@ -548,7 +548,7 @@ public class MusicStore {
     }
 
     /**
-     * 将歌曲从 “我喜欢” 歌单中移除。
+     * 将歌曲从 “我的收藏” 歌单中移除。
      */
     public synchronized void removeFromFavorite(@NonNull Music music) {
         Preconditions.checkNotNull(music);
@@ -563,9 +563,9 @@ public class MusicStore {
     }
 
     /**
-     * 切换歌曲的 “我喜欢” 状态。
+     * 切换歌曲的 “我的收藏” 状态。
      * <p>
-     * 如果歌曲已经添加到 “我喜欢” 歌单中，则移除它，否则将其添加到 “我喜欢” 歌单中。
+     * 如果歌曲已经添加到 “我的收藏” 歌单中，则移除它，否则将其添加到 “我的收藏” 歌单中。
      *
      * @param music {@link Music} 对象，不能为 null
      */
@@ -1131,13 +1131,13 @@ public class MusicStore {
     }
 
     /**
-     * 用于监听 “我喜欢” 歌单的修改事件。
+     * 用于监听 “我的收藏” 歌单的修改事件。
      * <p>
-     * 当往 “我喜欢” 歌单中添加或移除一首歌曲时，该监听器会被调用。
+     * 当往 “我的收藏” 歌单中添加或移除一首歌曲时，该监听器会被调用。
      */
     public interface OnFavoriteChangeListener {
         /**
-         * 当 “我喜欢” 歌单被修改时，会调用该方法。
+         * 当 “我的收藏” 歌单被修改时，会调用该方法。
          * <p>
          * 该回调方法会在应用程序主线程调用。
          */
