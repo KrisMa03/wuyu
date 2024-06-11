@@ -38,13 +38,11 @@ public class MessageDialog extends BottomDialog {
         TextView tvMessage = dialog.findViewById(R.id.tvMessage);
         Button btnPositive = dialog.findViewById(R.id.btnPositive);
         Button btnNegative = dialog.findViewById(R.id.btnNegative);
-        Space space = dialog.findViewById(R.id.space);
 
         Objects.requireNonNull(tvDialogTitle);
         Objects.requireNonNull(tvMessage);
         Objects.requireNonNull(btnPositive);
         Objects.requireNonNull(btnNegative);
-        Objects.requireNonNull(space);
 
         tvDialogTitle.setText(mTitle);
         tvMessage.setText(mMessage);
@@ -66,11 +64,7 @@ public class MessageDialog extends BottomDialog {
             }
         });
 
-        if (mHideNegativeButton) {
-            btnNegative.setVisibility(View.GONE);
-            space.setVisibility(View.GONE);
-            return;
-        }
+
 
         btnNegative.setOnClickListener(v -> {
             dismiss();

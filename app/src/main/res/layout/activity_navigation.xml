@@ -15,6 +15,7 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
         android:orientation="vertical"
+        android:background="#F1F5F8"
         tools:context=".activity.navigation.NavigationActivity">
 
         <LinearLayout
@@ -31,7 +32,7 @@
                 android:layout_width="0dp"
                 android:layout_height="36dp"
                 android:layout_weight="1"
-                android:background="@drawable/bg_search_input"
+                android:background="@drawable/bg_search_input2"
                 android:clickable="true"
                 android:focusable="true"
                 android:gravity="center_vertical"
@@ -79,6 +80,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="#F1F5F8"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -250,63 +252,72 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginBottom="0dp"
-                    android:gravity="center"
-                    android:onClick="@{navViewModel::navigateToHistory}"
-                    android:orientation="horizontal"
-                    android:paddingTop="0dp">
+                    android:layout_height="183dp"
+                    android:background="@drawable/rounded_corners"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
-                    <Space
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                    <LinearLayout
+                        android:layout_width="396dp"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="0dp"
+                        android:background="@drawable/rounded_corners"
+                        android:gravity="center"
+                        android:onClick="@{navViewModel::navigateToHistory}"
+                        android:orientation="horizontal"
+                        android:paddingTop="0dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="最近播放"
-                        android:textSize="17sp" />
+                        <Space
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
 
-                    <View
-                        android:layout_width="160dp"
-                        android:layout_height="6dp"
-                        android:layout_weight="1" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="最近播放"
+                            android:textSize="17sp" />
 
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:contentDescription="@string/des_history"
-                        android:scaleType="centerInside"
-                        app:srcCompat="@drawable/ic_right" />
+                        <View
+                            android:layout_width="160dp"
+                            android:layout_height="6dp"
+                            android:layout_weight="1" />
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:contentDescription="@string/des_history"
+                            android:scaleType="centerInside"
+                            app:srcCompat="@drawable/ic_right" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="102dp"
-                    android:orientation="horizontal">
+                    </LinearLayout>
 
-                    <ImageView
-                        android:id="@+id/imageView2"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        android:layout_height="102dp"
+                        android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/imageView4"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        <ImageView
+                            android:id="@+id/imageView2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            tools:srcCompat="@tools:sample/avatars" />
 
-                    <ImageView
-                        android:id="@+id/imageView5"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        <ImageView
+                            android:id="@+id/imageView4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            tools:srcCompat="@tools:sample/avatars" />
+
+                        <ImageView
+                            android:id="@+id/imageView5"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            tools:srcCompat="@tools:sample/avatars" />
+                    </LinearLayout>
                 </LinearLayout>
 
 
@@ -330,7 +341,7 @@
                 android:layout_height="80dp"
                 android:baselineAligned="false"
                 android:gravity="center_vertical"
-                android:background="@color/colorDivider"
+                android:background="@drawable/round_corners2"
                 android:orientation="horizontal">
 
                 <FrameLayout
