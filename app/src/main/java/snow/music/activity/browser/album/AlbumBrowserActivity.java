@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import java.util.List;
 
@@ -36,6 +37,9 @@ public class AlbumBrowserActivity extends ListActivity {
         PlayerUtil.initPlayerViewModel(this, mPlayerViewModel, AppPlayerService.class);
 
         rvAlbumBrowser = findViewById(R.id.rvAlbumBrowser);
+        Button btnSongs = findViewById(R.id.btnAlbums);
+
+        btnSongs.setSelected(true);
         initRecyclerView();
     }
 

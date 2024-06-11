@@ -110,75 +110,9 @@
                         android:layout_weight="1" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:baselineAligned="false"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:id="@+id/itemArtist"
-                        android:layout_width="0dp"
-                        android:layout_height="80dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_list_item"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:gravity="center"
-                        android:onClick="@{navViewModel::navigateToArtistBrowser}"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:contentDescription="@string/des_artist"
-                            android:scaleType="centerInside"
-                            app:srcCompat="@drawable/ic_artist" />
-
-                        <Space
-                            android:layout_width="0dp"
-                            android:layout_height="8dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/item_artist"
-                            android:textSize="17sp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/itemAlbum"
-                        android:layout_width="0dp"
-                        android:layout_height="80dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_list_item"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:gravity="center"
-                        android:onClick="@{navViewModel::navigateToAlbum}"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:contentDescription="@string/des_album"
-                            android:scaleType="centerInside"
-                            app:srcCompat="@drawable/ic_album" />
-
-                        <Space
-                            android:layout_width="0dp"
-                            android:layout_height="8dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/item_album"
-                            android:textSize="17sp" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="20dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

@@ -10,8 +10,16 @@ import androidx.fragment.app.FragmentManager;
 
 import com.google.common.base.Preconditions;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import io.reactivex.Single;
 import snow.music.fragment.ringtone.RingtoneUtilFragment;
@@ -40,23 +48,86 @@ public final class MusicUtil {
                 musicItem.getUri(),
                 musicItem.getIconUri(),
                 musicItem.getDuration(),
-                getAddTime(musicItem)
+                getAddTime(musicItem),
+                musicItem.getLyrics()
         );
     }
+    public static String readLrcFromFile(String filePath) {
+        File file = new File(filePath);
+        StringBuilder text = new StringBuilder();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                text.append(line);
+                text.append('\n');
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return text.toString();
+    }
+
+    public static Map<Integer, String> parseLyricsToSeconds(String lrcContent) {
+        Map<Integer, String> lyricsMap = new HashMap<>();
+        String[] lines = lrcContent.split("\n");
+
+        for (String line : lines) {
+            if (line.trim().isEmpty()) {
+                continue;
+            }
+
+            // 匹配行中的所有时间标签
+            Matcher matcher = Pattern.compile("\\[(\\d{2}):(\\d{2})\\.\\d{2}]").matcher(line);
+            List<Integer> times = new ArrayList<>();
+
+            // 提取所有时间标签，并转换为秒
+            while (matcher.find()) {
+                int minutes = Integer.parseInt(matcher.group(1));
+                int seconds = Integer.parseInt(matcher.group(2));
+                int timeInSeconds = minutes * 60 + seconds;
+                times.add(timeInSeconds);
+            }
+
+            // 移除时间标签，留下歌词部分
+            String lyrics = line.replaceAll("\\[\\d{2}:\\d{2}\\.\\d{2}]", "").trim();
+
+            // 将同一句歌词映射到所有对应的时间点
+            for (int time : times) {
+                lyricsMap.put(time, lyrics);
+            }
+        }
+
+        return lyricsMap;
+    }
+
 
     public static MusicItem asMusicItem(@NonNull Music music) {
-        Preconditions.checkNotNull(music);
+        // Ensure the Music object is not null
+        Preconditions.checkNotNull(music, "Music object cannot be null");
 
-        MusicItem musicItem = new MusicItem.Builder()
+        // Initialize the builder for MusicItem
+        MusicItem.Builder builder = new MusicItem.Builder()
                 .setMusicId(String.valueOf(music.getId()))
                 .setTitle(music.getTitle())
                 .setArtist(music.getArtist())
                 .setAlbum(music.getAlbum())
                 .setUri(music.getUri())
                 .setIconUri(music.getIconUri())
-                .setDuration(music.getDuration())
-                .build();
+                .setDuration(music.getDuration());
 
+        // Check if lyrics are available; if not, use an empty string as default
+        if (music.getLyrics() != null) {
+            builder.setLyrics(music.getLyrics());
+        } else {
+            builder.setLyrics("");  // Set default lyrics to an empty string
+        }
+
+        // Build the MusicItem object
+        MusicItem musicItem = builder.build();
+
+        // Assuming 'putAddTime' is a method that somehow modifies or uses the MusicItem
         putAddTime(musicItem, music);
 
         return musicItem;

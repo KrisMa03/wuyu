@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -14,9 +16,14 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import snow.music.GlideApp;
 import snow.music.R;
 import snow.music.activity.BaseActivity;
+import snow.music.activity.detail.album.AlbumDetailActivity;
+import snow.music.activity.detail.artist.ArtistDetailActivity;
 import snow.music.activity.navigation.NavigationActivity;
 import snow.music.databinding.ActivityPlayerBinding;
 import snow.music.dialog.AddToMusicListDialog;
@@ -37,7 +44,9 @@ public class PlayerActivity extends BaseActivity {
     private ActivityPlayerBinding mBinding;
     private AlbumIconAnimManager mAlbumIconAnimManager;
     private RequestManager mRequestManager;
-
+    private Map<Integer, String> mLyrics;
+    private Handler mHandler = new Handler();
+    private Runnable mUpdateLyricsRunnable;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +88,30 @@ public class PlayerActivity extends BaseActivity {
 
                     Toast.makeText(PlayerActivity.this, messageId, Toast.LENGTH_SHORT).show();
                 });
+
+
+    }
+    //更新歌词
+    private void updateLyrics() {
+        long currentPosition = mPlayerViewModel.getPlayProgress().getValue(); // 获取当前播放进度
+        Log.d("lyrics",currentPosition+""+mLyrics.toString());
+        if (mLyrics.isEmpty()) {
+            mBinding.tvLyrics.setText(""); // 如果没有歌词，则不显示任何内容
+            return;
+        }
+
+        // 查找当前时间之前的最近一条歌词
+        String currentLyric = "";
+        long closestTime = -1;
+        for (Map.Entry<Integer, String> entry : mLyrics.entrySet()) {
+            long time = entry.getKey();
+            if (time <= currentPosition && time > closestTime) {
+                closestTime = time;
+                currentLyric = entry.getValue();
+            }
+        }
+
+        mBinding.tvLyrics.setText(currentLyric);
     }
 
     private boolean isStartByPendingIntent() {
@@ -102,6 +135,28 @@ public class PlayerActivity extends BaseActivity {
                             .transform(new CenterCrop(), new CircleCrop())
                             .transition(DrawableTransitionOptions.withCrossFade())
                             .into(mBinding.ivAlbumIcon);
+                    // 初始化歌词
+                    mLyrics = new HashMap<>(); // 初始化歌词映射
+
+                    // 从当前播放的音乐中获取歌词并进行解析
+                    MusicItem currentMusicItem = musicItem;
+
+                    if (currentMusicItem != null) {
+                        String lyricsContent = currentMusicItem.getLyrics();
+                        mLyrics = MusicUtil.parseLyricsToSeconds(lyricsContent);
+                        Log.d("lyrics",mLyrics.toString());
+                    }
+                    Log.d("lyrics","123");
+                    // 初始化歌词更新 Runnable
+                    mUpdateLyricsRunnable = new Runnable() {
+                        @Override
+                        public void run() {
+                            updateLyrics();
+                            mHandler.postDelayed(this, 500); // 每500毫秒更新一次歌词
+                        }
+                    };
+
+                    mHandler.post(mUpdateLyricsRunnable); // 开始更新歌词
                 });
     }
 
@@ -131,15 +186,20 @@ public class PlayerActivity extends BaseActivity {
         }
 
         BottomMenuDialog bottomMenuDialog = new BottomMenuDialog.Builder(this)
-                .setTitle(musicItem.getTitle())
-                .addMenuItem(R.drawable.ic_menu_item_add, R.string.menu_item_add_to_music_list)
-                .addMenuItem(R.drawable.ic_menu_item_rington, R.string.menu_item_set_as_ringtone)
+                .setTitle(musicItem.getTitle()) // 设置对话框标题为歌曲标题
+                .addMenuItem(R.drawable.ic_menu_item_add, musicItem.getArtist()) // 添加一个菜单项显示歌手名字
+                .addMenuItem(R.drawable.ic_menu_item_add, musicItem.getAlbum()) // 添加一个菜单项显示专辑名字
+                .addMenuItem(R.drawable.ic_menu_item_add, R.string.menu_item_add_to_music_list) // 添加到音乐列表
+                .addMenuItem(R.drawable.ic_menu_item_rington, R.string.menu_item_set_as_ringtone) // 设置为铃声
                 .setOnMenuItemClickListener((dialog, position) -> {
                     dialog.dismiss();
-
-                    if (position == 0) {
+                    if (position == 0) { // 点击歌手名字
+                        ArtistDetailActivity.start(this, musicItem.getArtist());
+                    } else if (position == 1) { // 点击专辑名字
+                        AlbumDetailActivity.start(this, musicItem.getAlbum());
+                    } else if (position == 2) {
                         addToMusicListDialog(musicItem);
-                    } else if (position == 1) {
+                    } else if (position == 3) {
                         setAsRingtone(musicItem);
                     }
                 })
@@ -157,4 +217,10 @@ public class PlayerActivity extends BaseActivity {
         MusicUtil.setAsRingtone(getSupportFragmentManager(), MusicUtil.asMusic(musicItem));
     }
 
+    //销毁歌词
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mHandler.removeCallbacks(mUpdateLyricsRunnable); // 停止更新歌词
+    }
 }

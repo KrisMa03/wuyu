@@ -3,6 +3,7 @@ package snow.music.activity.browser.artist;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
@@ -35,7 +36,9 @@ public class ArtistBrowserActivity extends ListActivity {
         mPlayerViewModel = provider.get(PlayerViewModel.class);
 
         PlayerUtil.initPlayerViewModel(this, mPlayerViewModel, AppPlayerService.class);
+        Button btnSongs = findViewById(R.id.btnArtists);
 
+        btnSongs.setSelected(true);
         rvArtistBrowser = findViewById(R.id.rvArtistBrowser);
         initRecyclerView();
     }
