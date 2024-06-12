@@ -187,10 +187,10 @@ public class PlayerActivity extends BaseActivity {
 
         BottomMenuDialog bottomMenuDialog = new BottomMenuDialog.Builder(this)
                 .setTitle(musicItem.getTitle()) // 设置对话框标题为歌曲标题
-                .addMenuItem(R.drawable.ic_menu_item_add, musicItem.getArtist()) // 添加一个菜单项显示歌手名字
-                .addMenuItem(R.drawable.ic_menu_item_add, musicItem.getAlbum()) // 添加一个菜单项显示专辑名字
-                .addMenuItem(R.drawable.ic_menu_item_add, R.string.menu_item_add_to_music_list) // 添加到音乐列表
-                .addMenuItem(R.drawable.ic_menu_item_rington, R.string.menu_item_set_as_ringtone) // 设置为铃声
+                .addMenuItem(R.drawable.ic_artist, musicItem.getArtist())
+                .addMenuItem(R.drawable.ic_album, musicItem.getAlbum())
+                .addMenuItem(R.drawable.ic_menu_item_add, R.string.menu_item_add_to_music_list)
+                .addMenuItem(R.drawable.ic_menu_item_rington, R.string.menu_item_set_as_ringtone)
                 .setOnMenuItemClickListener((dialog, position) -> {
                     dialog.dismiss();
                     if (position == 0) { // 点击歌手名字

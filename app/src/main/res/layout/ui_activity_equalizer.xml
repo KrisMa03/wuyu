@@ -35,7 +35,7 @@
                     android:contentDescription="@string/snow_ui_des_back"
                     android:scaleType="centerInside"
                     app:tint="?android:textColor"
-                    app:srcCompat="@drawable/snow_ui_ic_back" />
+                    app:srcCompat="@drawable/ui_ic_back" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -83,7 +83,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
-            android:background="@drawable/snow_ui_bg_spinner"
+            android:background="@drawable/ui_bg_spinner"
             android:orientation="horizontal">
 
             <Spinner
@@ -99,11 +99,11 @@
                 android:layout_height="36dp"
                 android:layout_gravity="end|center_vertical"
                 android:layout_margin="6dp"
-                android:background="@drawable/snow_ui_bg_button_36dp"
+                android:background="@drawable/ui_bg_button_36dp"
                 android:contentDescription="@string/snow_ui_des_drop_down"
                 android:enabled="@{equalizerViewModel.enabled}"
                 android:scaleType="centerInside"
-                app:srcCompat="@drawable/snow_ui_ic_arrow_drop_down"
+                app:srcCompat="@drawable/ui_ic_arrow_drop_down"
                 app:tint="@color/snow_ui_textColor" />
 
         </FrameLayout>

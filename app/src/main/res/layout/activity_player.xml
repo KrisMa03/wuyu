@@ -25,7 +25,7 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/action_bar_height"
+            android:layout_height="48dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -43,8 +43,9 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="413dp"
-            android:layout_weight="1">
+            android:layout_height="336dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical">
 
             <FrameLayout
                 android:layout_width="337dp"
@@ -66,17 +67,17 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="83dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginLeft="64dp"
                 android:layout_marginRight="64dp"
                 android:gravity="center"
-                android:layout_gravity="center"
                 android:orientation="vertical"
                 android:paddingLeft="24dp"
                 android:paddingRight="24dp">

@@ -11,13 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@drawable/snow_ui_bg_equalizer_band_item">
+        android:background="@drawable/ui_bg_equalizer_band_item">
 
         <com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBar
             android:id="@+id/seekBar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:progressDrawable="@drawable/snow_ui_progress_equalizer_band"
+            android:progressDrawable="@drawable/ui_progress_equalizer_band"
             app:seekBarRotation="CW270"
             tools:progress="50" />
 
