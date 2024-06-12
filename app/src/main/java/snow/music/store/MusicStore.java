@@ -26,6 +26,7 @@ import io.objectbox.BoxStore;
 import io.objectbox.query.QueryBuilder;
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
+import snow.music.util.MusicUtil;
 
 /**
  * 歌曲数据库，用于存储本地音乐与本地歌单。
@@ -75,6 +76,14 @@ public class MusicStore {
         mAllCustomMusicListName = new HashSet<>();
 
         loadAllMusicListName();
+    }
+    public void bindLyricsToMusicById(long musicId, String lrcFilePath) {
+        Music music = getMusic(musicId);
+        if (music != null) {
+            String lyrics = MusicUtil.readLrcFromFile(lrcFilePath);
+            music.setLyrics(lyrics);
+            putMusic(music); // 保存更新后的音乐对象
+        }
     }
 
     private void loadAllMusicListName() {

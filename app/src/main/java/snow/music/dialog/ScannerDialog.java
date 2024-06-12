@@ -436,8 +436,10 @@ public class ScannerDialog extends BottomDialog {
                     getAudioUri(cursor).toString(),
                     "",
                     getDuration(cursor),
-                    getDateModified(cursor));
+                    getDateModified(cursor),
+                    ""); // 初始化歌词字段为空字符串
         }
+
 
         private String getFileName(Cursor cursor) {
             String displayName = getDisplayName(cursor);

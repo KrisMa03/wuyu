@@ -22,7 +22,9 @@ public class Music {
     private int duration;
     private long addTime;
 
-    public Music(long id, String title, String artist, String album, String uri, String iconUri, int duration, long addTime) {
+    private String lyrics;  // 添加此字段
+
+    public Music(long id, String title, String artist, String album, String uri, String iconUri, int duration, long addTime, String lyrics){
         this.id = id;
         this.title = title;
         this.artist = artist;
@@ -31,6 +33,7 @@ public class Music {
         this.iconUri = iconUri;
         this.duration = duration;
         this.addTime = addTime;
+        this.lyrics = lyrics;
     }
 
     public long getId() {
@@ -92,7 +95,13 @@ public class Music {
     public void setAddTime(long addTime) {
         this.addTime = addTime;
     }
+    public String getLyrics() {
+        return lyrics;
+    }
 
+    public void setLyrics(String lyrics) {
+        this.lyrics = lyrics;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
