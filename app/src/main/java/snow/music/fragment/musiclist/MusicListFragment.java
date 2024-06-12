@@ -1,6 +1,8 @@
 package snow.music.fragment.musiclist;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProvider;
@@ -17,6 +19,7 @@ import snow.music.dialog.BottomDialog;
 import snow.music.dialog.BottomMenuDialog;
 import snow.music.store.Music;
 import snow.music.store.MusicStore;
+import snow.music.util.MusicUtil;
 
 public class MusicListFragment extends BaseMusicListFragment {
     private static final String KEY_MUSIC_LIST_NAME = "MUSIC_LIST_NAME";
@@ -73,6 +76,14 @@ public class MusicListFragment extends BaseMusicListFragment {
         }
     }
 
+    private void addLyricsToMusic(Music music) {
+        // 实现添加歌词的逻辑，比如弹出一个对话框让用户选择LRC文件
+        String lrcFilePath = "/sdcard/download/" + music.getTitle() + ".lrc";
+        String lyrics = MusicUtil.readLrcFromFile(lrcFilePath); // 读取歌词文件内容
+        MusicStore.getInstance().bindLyricsToMusicById(music.getId(), lrcFilePath);
+        Log.d("AddLyrics", "歌词内容123: " +music.getLyrics());
+    }
+
     private void showItemOptionMenu(boolean favorite, @NonNull Music music) {
         int favoriteIconRes = R.drawable.ic_menu_item_favorite_false;
         int favoriteTitleRes = R.string.menu_item_add_to_favorite;
@@ -87,6 +98,7 @@ public class MusicListFragment extends BaseMusicListFragment {
                 .addMenuItem(favoriteIconRes, favoriteTitleRes)
                 .addMenuItem(R.drawable.ic_menu_item_add, R.string.menu_item_add_to_music_list)
                 .addMenuItem(R.drawable.ic_menu_item_rington, R.string.menu_item_set_as_ringtone)
+                .addMenuItem(R.drawable.ic_menu_item_remove, "添加歌词")  // 新增歌词菜单项
                 .addMenuItem(R.drawable.ic_menu_item_remove, R.string.menu_item_remove)
                 .setOnMenuItemClickListener((dialog, position) -> {
                     dialog.dismiss();
@@ -108,6 +120,9 @@ public class MusicListFragment extends BaseMusicListFragment {
                             setAsRingtone(music);
                             break;
                         case 4:
+                            addLyricsToMusic(music);  // 新增歌词点击事件
+                            break;
+                        case 5:
                             removeMusic(music);
                             break;
                     }
