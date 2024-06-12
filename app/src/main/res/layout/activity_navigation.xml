@@ -184,7 +184,7 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center"
-                        android:onClick="@{navViewModel::navigateToFavorite}"
+                        android:onClick="@{navViewModel::navigateToAlbum}"
                         android:orientation="vertical">
 
                         <ImageView
@@ -216,6 +216,7 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center"
+                        android:onClick="@{navViewModel::navigateToArtistBrowser}"
                         android:orientation="vertical">
 
                         <ImageView
