@@ -13,13 +13,6 @@
         android:paddingLeft="24dp"
         android:paddingRight="24dp">
 
-        <ProgressBar
-            android:layout_width="24dp"
-            android:layout_height="24dp" />
-
-        <Space
-            android:layout_width="12dp"
-            android:layout_height="0dp" />
 
         <TextView
             android:id="@+id/tvDialogTitle"
@@ -28,6 +21,13 @@
             android:singleLine="true"
             android:text="@string/title_scan_music"
             android:textSize="@dimen/dialog_title_text_size" />
+
+        <Space
+            android:layout_width="228dp"
+            android:layout_height="6dp" />
+        <ProgressBar
+            android:layout_width="24dp"
+            android:layout_height="24dp" />
 
     </LinearLayout>
 
