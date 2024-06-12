@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
@@ -27,6 +28,7 @@ import snow.music.dialog.PlaylistDialog;
 import snow.music.dialog.ScannerDialog;
 import snow.music.service.AppPlayerService;
 import snow.music.store.HistoryEntity;
+import snow.music.store.Music;
 import snow.music.util.DimenUtil;
 import snow.music.util.MusicListUtil;
 import snow.music.util.PlayerUtil;
@@ -56,6 +58,7 @@ public class NavigationActivity extends BaseActivity {
 
         observerPlayingMusicItem();
         observerHistoryMusic(); // 观察历史数据
+        observeFavoriteMusic(); // 观察喜爱的音乐数据
 
         if (shouldScanLocalMusic()) {
             scanLocalMusic();
@@ -172,4 +175,67 @@ public class NavigationActivity extends BaseActivity {
         PlaylistDialog.newInstance()
                 .show(getSupportFragmentManager(), "Playlist");
     }
+
+    //最爱的音乐
+    private void observeFavoriteMusic() {
+        mNavigationViewModel.getFavoriteMusic().observe(this, favorites -> {
+            if (favorites != null && !favorites.isEmpty()) {
+                for (int i = 0; i < favorites.size() && i < 3; i++) {
+                    loadFavoriteMusicIcon(favorites.get(i), i);
+                }
+            }
+        });
+    }
+
+    private void loadFavoriteMusicIcon(Music favorite, int index) {
+        ImageView imageView;
+        TextView titleView;
+        TextView artistAlbumView;
+
+        switch (index) {
+            case 0:
+                imageView = findViewById(R.id.favoriteImageView1);
+                titleView = findViewById(R.id.favoriteTitle1);
+                artistAlbumView = findViewById(R.id.favoriteArtistAlbum1);
+                break;
+            case 1:
+                imageView = findViewById(R.id.favoriteImageView2);
+                titleView = findViewById(R.id.favoriteTitle2);
+                artistAlbumView = findViewById(R.id.favoriteArtistAlbum2);
+                break;
+            case 2:
+                imageView = findViewById(R.id.favoriteImageView3);
+                titleView = findViewById(R.id.favoriteTitle3);
+                artistAlbumView = findViewById(R.id.favoriteArtistAlbum3);
+                break;
+            default:
+                return;
+        }
+
+        String iconUri = favorite.getUri();
+        if (iconUri != null) {
+            GlideApp.with(this)
+                    .load(iconUri)
+                    .placeholder(R.mipmap.ic_album_default_icon_big)
+                    .transform(new CenterCrop(), new RoundedCorners(mIconCornerRadius))
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .into(imageView);
+        } else {
+            imageView.setImageResource(R.mipmap.ic_album_default_icon_big);
+        }
+
+        titleView.setText(favorite.getTitle());
+        artistAlbumView.setText(favorite.getArtist() + " - " + favorite.getAlbum());
+
+        imageView.setOnClickListener(v -> playFavoriteMusic(favorite));
+        titleView.setOnClickListener(v -> playFavoriteMusic(favorite));
+        artistAlbumView.setOnClickListener(v -> playFavoriteMusic(favorite));
+    }
+
+
+    private void playFavoriteMusic(Music favorite) {
+        Playlist playlist = MusicListUtil.asPlaylist("Favorite", Collections.singletonList(favorite), 0);
+        mPlayerViewModel.setPlaylist(playlist, 0, true);
+    }
+
 }

@@ -152,7 +152,7 @@ public class PlayerActivity extends BaseActivity {
                         @Override
                         public void run() {
                             updateLyrics();
-                            mHandler.postDelayed(this, 500); // 每500毫秒更新一次歌词
+                            mHandler.postDelayed(this, 200); // 每500毫秒更新一次歌词
                         }
                     };
 

@@ -98,7 +98,7 @@ public class MusicListFragment extends BaseMusicListFragment {
                 .addMenuItem(favoriteIconRes, favoriteTitleRes)
                 .addMenuItem(R.drawable.ic_menu_item_add, R.string.menu_item_add_to_music_list)
                 .addMenuItem(R.drawable.ic_menu_item_rington, R.string.menu_item_set_as_ringtone)
-                .addMenuItem(R.drawable.ic_menu_item_addly, "添加歌词")  // 新增歌词菜单项
+                .addMenuItem(R.drawable.ic_menu_item_add, "添加歌词")  // 新增歌词菜单项
                 .addMenuItem(R.drawable.ic_menu_item_remove, R.string.menu_item_remove)
                 .setOnMenuItemClickListener((dialog, position) -> {
                     dialog.dismiss();

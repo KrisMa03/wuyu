@@ -18,6 +18,8 @@ import androidx.lifecycle.ViewModel;
 
 import com.google.common.base.Preconditions;
 
+import java.util.List;
+
 import snow.music.R;
 import snow.music.activity.browser.album.AlbumBrowserActivity;
 import snow.music.activity.browser.artist.ArtistBrowserActivity;
@@ -28,6 +30,7 @@ import snow.music.activity.localmusic.LocalMusicActivity;
 import snow.music.activity.player.PlayerActivity;
 import snow.music.activity.search.SearchActivity;
 import snow.music.activity.setting.SettingActivity;
+import snow.music.store.Music;
 import snow.music.store.MusicStore;
 import snow.music.util.FavoriteObserver;
 import snow.music.util.MusicUtil;
@@ -37,6 +40,8 @@ import snow.player.audio.MusicItem;
 import snow.player.lifecycle.PlayerViewModel;
 
 public class NavigationViewModel extends ViewModel {
+    //最爱的音乐
+    private final MutableLiveData<List<Music>> mFavoriteMusic;
     private final MutableLiveData<Integer> mFavoriteDrawable;
     private final MutableLiveData<CharSequence> mSecondaryText;
 
@@ -51,8 +56,10 @@ public class NavigationViewModel extends ViewModel {
     public NavigationViewModel() {
         mFavoriteDrawable = new MutableLiveData<>(R.drawable.ic_favorite_false);
         mSecondaryText = new MutableLiveData<>("");
+               mFavoriteMusic = new MutableLiveData<>();
         mFavoriteObserver = new FavoriteObserver(favorite ->
-                mFavoriteDrawable.setValue(favorite ? R.drawable.ic_favorite_true : R.drawable.ic_favorite_false));
+                updateFavoriteMusic()
+        );
         mArtistObserver = artist -> updateSecondaryText();
         mErrorObserver = error -> updateSecondaryText();
         mPlayingMusicItemObserver = mFavoriteObserver::setMusicItem;
@@ -72,6 +79,19 @@ public class NavigationViewModel extends ViewModel {
         mPlayerViewModel.getPlayingMusicItem().observeForever(mPlayingMusicItemObserver);
         mPlayerViewModel.getArtist().observeForever(mArtistObserver);
         mPlayerViewModel.isError().observeForever(mErrorObserver);
+
+        // 初始加载喜爱的音乐
+        updateFavoriteMusic();
+    }
+
+    //最喜爱
+    private void updateFavoriteMusic() {
+        List<Music> favoriteMusicList = MusicStore.getInstance().getFavoriteMusicList().getMusicElements();
+        mFavoriteMusic.postValue(favoriteMusicList);
+    }
+
+    public LiveData<List<Music>> getFavoriteMusic() {
+        return mFavoriteMusic;
     }
 
     private void updateSecondaryText() {
@@ -233,4 +253,5 @@ public class NavigationViewModel extends ViewModel {
         Intent intent = new Intent(context, activity);
         context.startActivity(intent);
     }
+    
 }
