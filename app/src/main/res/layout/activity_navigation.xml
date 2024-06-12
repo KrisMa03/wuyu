@@ -78,12 +78,12 @@
                 >
 
                 <LinearLayout
-                    android:layout_width="390dp"
+                    android:layout_width="380dp"
                     android:layout_height="144dp"
                     android:layout_gravity="center_horizontal"
+                    android:background="@drawable/round_corners2"
                     android:gravity="center"
-                    android:orientation="horizontal"
-                    android:background="#FFFFFF">
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:id="@+id/imageView"
@@ -122,11 +122,11 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Lv5"
                             android:singleLine="true"
-                            android:textStyle="bold"
+                            android:text="Lv5"
                             android:textColor="@color/colorSecondaryText"
-                            android:textSize="15sp" />
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                     <Space
@@ -141,7 +141,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:layout_height="99dp"
                     android:baselineAligned="false"
                     android:orientation="horizontal"
                     android:paddingLeft="8dp"
@@ -280,11 +280,12 @@
                     android:layout_height="6dp" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="#F1F5F8"
-                    android:padding="16dp">
+                    android:layout_width="380dp"
+                    android:layout_height="183dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/rounded_corners"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="380dp"
@@ -295,7 +296,6 @@
                         android:onClick="@{navViewModel::navigateToHistory}"
                         android:orientation="horizontal"
                         android:paddingTop="0dp">
-
                         <Space
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -308,23 +308,16 @@
                             android:textSize="17sp" />
 
                         <View
-                            android:layout_width="160dp"
-                            android:layout_height="6dp"
+                            android:layout_width="221dp"
+                            android:layout_height="12dp"
                             android:layout_weight="1" />
-
                         <ImageView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:contentDescription="@string/des_history"
                             android:scaleType="centerInside"
-                            android:background="@drawable/rounded_corners"
                             app:srcCompat="@drawable/ic_right" />
-
                     </LinearLayout>
-
-                    <Space
-                        android:layout_width="wrap_content"
-                        android:layout_height="10dp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -352,14 +345,25 @@
                             android:layout_weight="1"
                             tools:srcCompat="@tools:sample/avatars" />
                     </LinearLayout>
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="10dp" />
+
                 </LinearLayout>
 
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp" />
+
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="380dp"
+                    android:layout_height="290dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/rounded_corners"
+                    android:gravity="center_horizontal"
                     android:orientation="vertical"
-                    android:background="#F1F5F8"
-                    android:padding="16dp">
+                    android:padding="0dp">
                     <LinearLayout
                         android:layout_width="380dp"
                         android:layout_height="60dp"
@@ -369,7 +373,6 @@
                         android:onClick="@{navViewModel::navigateToFavorite}"
                         android:orientation="horizontal"
                         android:paddingTop="0dp">
-
                         <Space
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -382,30 +385,32 @@
                             android:textSize="17sp" />
 
                         <View
-                            android:layout_width="160dp"
-                            android:layout_height="6dp"
+                            android:layout_width="221dp"
+                            android:layout_height="12dp"
                             android:layout_weight="1" />
-
                         <ImageView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:contentDescription="@string/des_favorite"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:contentDescription="@string/des_history"
                             android:scaleType="centerInside"
-                            android:background="@drawable/rounded_corners"
                             app:srcCompat="@drawable/ic_right" />
-
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:paddingTop="10dp">
+                        android:paddingTop="0dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             android:paddingBottom="8dp">
+
+                            <Space
+                                android:layout_width="15dp"
+                                android:layout_height="10dp"
+                                android:layout_weight="0" />
 
                             <ImageView
                                 android:id="@+id/favoriteImageView1"
@@ -444,7 +449,10 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             android:paddingBottom="8dp">
-
+                            <Space
+                                android:layout_width="15dp"
+                                android:layout_height="10dp"
+                                android:layout_weight="0" />
                             <ImageView
                                 android:id="@+id/favoriteImageView2"
                                 android:layout_width="60dp"
@@ -482,7 +490,10 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             android:paddingBottom="8dp">
-
+                            <Space
+                                android:layout_width="15dp"
+                                android:layout_height="10dp"
+                                android:layout_weight="0" />
                             <ImageView
                                 android:id="@+id/favoriteImageView3"
                                 android:layout_width="60dp"
