@@ -1,2 +1,0 @@
--keep class androidx.databinding.** { *; }
--keep class snow.player.ui.databinding.** { *; }
