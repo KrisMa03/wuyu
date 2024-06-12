@@ -43,15 +43,15 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="417dp"
+            android:layout_height="413dp"
             android:layout_weight="1">
+
             <FrameLayout
                 android:layout_width="337dp"
                 android:layout_height="337dp"
                 android:layout_centerInParent="true"
                 android:background="@drawable/rounded_rectangle"
-                android:padding="16dp"
-                > <!-- 添加内边距以显示边框效果 -->
+                android:padding="16dp"> <!-- 添加内边距以显示边框效果 -->
 
                 <ImageView
                     android:id="@+id/ivAlbumIcon"
@@ -66,16 +66,17 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="95dp"
+            android:layout_height="55dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="237dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="64dp"
                 android:layout_marginRight="64dp"
                 android:gravity="center"
+                android:layout_gravity="center"
                 android:orientation="vertical"
                 android:paddingLeft="24dp"
                 android:paddingRight="24dp">
@@ -87,7 +88,7 @@
                     android:ellipsize="middle"
                     android:singleLine="true"
                     android:text="@{playerViewModel.title}"
-                    android:textSize="20sp"
+                    android:textSize="20dp"
                     tools:text="@string/app_name" />
 
                 <TextView
@@ -105,48 +106,27 @@
 
         </FrameLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="417dp"
-            android:layout_weight="1">
-            <FrameLayout
-                android:layout_width="337dp"
-                android:layout_height="337dp"
-                android:layout_centerInParent="true"
-                android:background="@drawable/rounded_rectangle"
-                android:padding="16dp"
-                > <!-- 添加内边距以显示边框效果 -->
-
-                <ImageView
-                    android:id="@+id/ivAlbumIcon"
-                    android:layout_width="@dimen/player_album_icon_size"
-                    android:layout_height="@dimen/player_album_icon_size"
-                    android:background="@drawable/bg_player_album_icon"
-                    android:contentDescription="@string/des_album_icon"
-                    android:padding="50dp"
-                    android:src="@mipmap/ic_player_album_default_icon_big" />
-            </FrameLayout>
-        </RelativeLayout>
-
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/tvLyrics"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textColor="@color/colorPrimary"
-                android:textSize="23sp"
+                android:layout_height="61dp"
                 android:layout_marginTop="0dp"
+                android:gravity="center"
                 android:padding="0dp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
                 tools:text="歌词显示区" />
         </FrameLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="42dp"
             android:baselineAligned="false"
             android:orientation="horizontal">
 
@@ -255,9 +235,9 @@
                     android:gravity="start"
                     android:minWidth="32dp"
                     android:text="@{playerViewModel.textPlayProgress}"
+                    android:textColor="#808080"
                     android:textSize="14sp"
                     android:textStyle="bold"
-                    android:textColor="#808080"
                     tools:text="00:10" />
 
                 <TextView
@@ -268,9 +248,9 @@
                     android:gravity="end"
                     android:minWidth="32dp"
                     android:text="@{playerViewModel.textDuration}"
+                    android:textColor="#808080"
                     android:textSize="14sp"
                     android:textStyle="bold"
-                    android:textColor="#808080"
                     tools:text="04:03" />
             </LinearLayout>
         </LinearLayout>
@@ -284,7 +264,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="66dp"
             android:baselineAligned="false"
             android:gravity="center_vertical"
             android:orientation="horizontal">
