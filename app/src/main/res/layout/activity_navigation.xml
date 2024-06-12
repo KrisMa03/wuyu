@@ -192,7 +192,7 @@
                             android:layout_height="40dp"
                             android:contentDescription="喜欢"
                             android:scaleType="centerInside"
-                            app:srcCompat="@drawable/ic_favorite_true" />
+                            app:srcCompat="@drawable/ic_album_menu" />
 
                         <Space
                             android:layout_width="0dp"
@@ -201,7 +201,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="我的收藏"
+                            android:text="专辑"
                             android:textSize="17sp" />
 
                     </LinearLayout>
@@ -223,7 +223,7 @@
                             android:layout_height="40dp"
                             android:contentDescription="123"
                             android:scaleType="centerInside"
-                            app:srcCompat="@drawable/bg_list_item" />
+                            app:srcCompat="@drawable/ic_artist_menu" />
 
                         <Space
                             android:layout_width="0dp"
@@ -232,7 +232,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="新图标"
+                            android:text="歌手"
                             android:textSize="17sp" />
 
                     </LinearLayout>
