@@ -111,7 +111,7 @@
         <string name="message_remove_history">移除历史记录？</string>
         <string name="message_clear_history">清空历史记录？</string>
         <string name="message_play_all_music">播放全部歌曲？</string>
-        <string name="title_scan_music">扫描歌曲</string>
+        <string name="title_scan_music">扫描本地歌曲</string>
         <string name="toast_no_read_storage_permission">无存储器访问权限！</string>
         <string name="message_scan_local_music">扫描本地音乐？</string>
         <string name="message_no_new_songs_found">未发现新歌曲</string>

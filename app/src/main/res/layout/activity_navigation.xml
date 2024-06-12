@@ -19,7 +19,7 @@
         tools:context=".activity.navigation.NavigationActivity">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="396dp"
             android:layout_height="48dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
@@ -29,7 +29,7 @@
 
             <LinearLayout
                 android:id="@+id/searchBar"
-                android:layout_width="0dp"
+                android:layout_width="391dp"
                 android:layout_height="36dp"
                 android:layout_weight="1"
                 android:background="@drawable/bg_search_input2"
@@ -53,16 +53,6 @@
                     android:textColor="@color/grey_600" />
 
             </LinearLayout>
-
-            <ImageButton
-                android:id="@+id/btnSetting"
-                android:layout_width="@dimen/image_button_size"
-                android:layout_height="@dimen/image_button_size"
-                android:background="@drawable/bg_button_48dp"
-                android:contentDescription="@string/des_setting"
-                android:scaleType="centerInside"
-                android:tint="@color/colorIconTint"
-                app:srcCompat="@drawable/ic_setting" />
 
         </LinearLayout>
 

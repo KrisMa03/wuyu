@@ -14,7 +14,7 @@
         <shape android:shape="line">
             <stroke
                 android:width="4dp"
-                android:color="#6368DCD2" />
+                android:color="#9C869C99" />
         </shape>
     </item>
 
