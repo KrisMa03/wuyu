@@ -12,7 +12,7 @@ import io.objectbox.annotation.Unique;
 public class Music {
     @Id
     public long id;
-
+    public String onlineId;
     private String title;
     private String artist;
     private String album;
@@ -23,7 +23,8 @@ public class Music {
     private long addTime;
 
     private String lyrics;  // 添加此字段
-
+    public Music() {
+    }
     public Music(long id, String title, String artist, String album, String uri, String iconUri, int duration, long addTime, String lyrics){
         this.id = id;
         this.title = title;
@@ -35,7 +36,27 @@ public class Music {
         this.addTime = addTime;
         this.lyrics = lyrics;
     }
+    public Music(long id, String title, String artist, String album, String uri, String iconUri, int duration, long addTime, String lyrics, String onlineId) {
+        this.id = id;
+        this.title = title;
+        this.artist = artist;
+        this.album = album;
+        this.uri = uri;
+        this.iconUri = iconUri;
+        this.duration = duration;
+        this.addTime = addTime;
+        this.lyrics = lyrics;
+        this.onlineId = onlineId;
+    }
 
+    // getter 和 setter 方法
+    public String getOnlineId() {
+        return onlineId;
+    }
+
+    public void setOnlineId(String onlineId) {
+        this.onlineId = onlineId;
+    }
     public long getId() {
         return id;
     }

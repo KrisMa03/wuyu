@@ -89,7 +89,6 @@ public class PlayerActivity extends BaseActivity {
                     Toast.makeText(PlayerActivity.this, messageId, Toast.LENGTH_SHORT).show();
                 });
 
-
     }
     //更新歌词
     private void updateLyrics() {
@@ -144,15 +143,13 @@ public class PlayerActivity extends BaseActivity {
                     if (currentMusicItem != null) {
                         String lyricsContent = currentMusicItem.getLyrics();
                         mLyrics = MusicUtil.parseLyricsToSeconds(lyricsContent);
-                        Log.d("lyrics",mLyrics.toString());
                     }
-                    Log.d("lyrics","123");
                     // 初始化歌词更新 Runnable
                     mUpdateLyricsRunnable = new Runnable() {
                         @Override
                         public void run() {
                             updateLyrics();
-                            mHandler.postDelayed(this, 200); // 每500毫秒更新一次歌词
+                            mHandler.postDelayed(this, 100); // 每500毫秒更新一次歌词
                         }
                     };
 

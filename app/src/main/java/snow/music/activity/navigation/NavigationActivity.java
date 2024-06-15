@@ -1,14 +1,16 @@
 package snow.music.activity.navigation;
 
-import static java.lang.Math.log;
+
 
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,6 +21,7 @@ import com.google.common.base.Preconditions;
 
 import java.util.Collections;
 
+import snow.api.SearchOnlineActivity;
 import snow.music.GlideApp;
 import snow.music.R;
 import snow.music.activity.BaseActivity;
@@ -49,7 +52,6 @@ public class NavigationActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_navigation);
-
         initAllViewModel();
         setPlayerClient(mPlayerViewModel.getPlayerClient());
 
@@ -65,6 +67,10 @@ public class NavigationActivity extends BaseActivity {
         }
 
         mIconCornerRadius = DimenUtil.getDimenPx(getResources(), R.dimen.album_icon_corner_radius);
+
+        //获取热歌
+        Button btnStartSearch = findViewById(R.id.btnStartSearch);
+        btnStartSearch.setOnClickListener(v -> startSearchActivity());
     }
 
     private void initAllViewModel() {
@@ -238,4 +244,10 @@ public class NavigationActivity extends BaseActivity {
         mPlayerViewModel.setPlaylist(playlist, 0, true);
     }
 
+
+    //网络调用
+    private void startSearchActivity() {
+        Intent intent = new Intent(this, SearchOnlineActivity.class);
+        startActivity(intent);
+    }
 }

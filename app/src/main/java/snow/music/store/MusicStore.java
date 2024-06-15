@@ -28,21 +28,7 @@ import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
 import snow.music.util.MusicUtil;
 
-/**
- * 歌曲数据库，用于存储本地音乐与本地歌单。
- * <p>
- * 注意！除以下方法外，{@link MusicStore} 的其他方法都会访问数据库，因此不建议在 UI 线程上调用，否则可能会导致 ANR。
- * <ul>
- *     <li>{@link #getInstance()}</li>
- *     <li>{@link #init(Context)}</li>
- *     <li>{@link #init(BoxStore)}</li>
- *     <li>{@link #isBuiltInName(String)}</li>
- *     <li>{@link #getBoxStore()}</li>
- * </ul>
- * <p>
- * 还有就是 {@link #sort(MusicList, MusicList.SortOrder, SortCallback)} 方法，该方法虽然会访问数据库，
- * 但是会在异步线程中执行。
- */
+//用于吧歌曲存在数据库
 public class MusicStore {
     private static final String TAG = "MusicStore";
     public static final String MUSIC_LIST_LOCAL_MUSIC = "__local_music";
@@ -105,11 +91,7 @@ public class MusicStore {
                 .subscribe();
     }
 
-    /**
-     * 初始化 {@link MusicStore}
-     *
-     * @param context Context 对象，不能为 null
-     */
+
     public synchronized static void init(@NonNull Context context) {
         Preconditions.checkNotNull(context);
 
@@ -124,11 +106,7 @@ public class MusicStore {
         init(boxStore);
     }
 
-    /**
-     * 初始化 {@link MusicStore}
-     *
-     * @param boxStore BoxStore 对象，不能为 null
-     */
+    //初始化
     public synchronized static void init(@NonNull BoxStore boxStore) {
         Preconditions.checkNotNull(boxStore);
 
@@ -163,11 +141,7 @@ public class MusicStore {
         }));
     }
 
-    /**
-     * 获取当前数据库的 BoxStore 对象，如果数据库还没有初始化，则会抛出 {@link IllegalStateException}
-     *
-     * @return 当前数据库的 BoxStore 对象
-     */
+    //获得数据库BoxStore 对象
     public synchronized BoxStore getBoxStore() throws IllegalStateException {
         if (mBoxStore == null) {
             throw new IllegalStateException("MusicStore not init yet.");
@@ -182,16 +156,7 @@ public class MusicStore {
         }
     }
 
-    /**
-     * 歌单名是否已存在。
-     * <p>
-     * 注意！所有自定义歌单名会在初始化时在异步线程进行预加载，如果你在所有自定义歌单名加载完成前调用该方法，
-     * 那么该方法的返回结果可能是不准确的。如果你需要准确的判断歌单名是否已存在，请使用
-     * {@link #isMusicListExists(String)} 方法，不过该方法会访问数据库，因此不建议在 UI 线程调用。
-     *
-     * @param name 歌单名，不能为 null
-     * @return 如果歌单名已存在，则返回 true，否则返回 false
-     */
+    //查看歌单是否存在
     public boolean isNameExists(@NonNull String name) {
         Preconditions.checkNotNull(name);
 
@@ -203,22 +168,13 @@ public class MusicStore {
         return name.trim().substring(0, Math.min(name.length(), NAME_MAX_LENGTH));
     }
 
-    /**
-     * 获取所有自建歌单的名称。
-     *
-     * @return 所有自建歌单名称
-     */
+    //获取内置歌单名称
     @NonNull
     public Set<String> getAllCustomMusicListName() {
         return mAllCustomMusicListName;
     }
 
-    /**
-     * 获取包含指定 {@link Music} 歌曲的所有自定义歌单的名称。
-     *
-     * @param music {@link Music} 对象，不能为 null
-     * @return 包含指定 {@link Music} 歌曲的所有自定义歌单的名称。
-     */
+    //获取对应歌曲歌单
     @NonNull
     public synchronized List<String> getAllCustomMusicListName(@NonNull Music music) {
         Preconditions.checkNotNull(music);
@@ -241,14 +197,7 @@ public class MusicStore {
         return new ArrayList<>(Arrays.asList(names));
     }
 
-    /**
-     * 歌单是否已存在。
-     * <p>
-     * 该方法会访问数据库，不建议在 UI 线程调用。
-     *
-     * @param name 歌单名，不能为 null
-     * @return 如果歌单已存在，则返回 true，否则返回 false
-     */
+    //查看歌单是否存在
     public synchronized boolean isMusicListExists(@NonNull String name) {
         Preconditions.checkNotNull(name);
         checkThread();
@@ -270,13 +219,7 @@ public class MusicStore {
         return count > 0;
     }
 
-    /**
-     * 创建一个新的歌单，如果歌单已存在，则直接返回它，不会创建新歌单。
-     *
-     * @param name 歌单名，不能为 null。不能是内置名称。name 字符串的最大长度为 {@link #NAME_MAX_LENGTH}，
-     *             超出部分会被截断。
-     * @throws IllegalArgumentException 如果 name 参数是个空字符串或者内置名称，则抛出该异常。
-     */
+    //创建新歌单
     @NonNull
     public synchronized MusicList createCustomMusicList(@NonNull String name) throws IllegalArgumentException {
         Preconditions.checkNotNull(name);
@@ -301,9 +244,7 @@ public class MusicStore {
         return new MusicList(entity);
     }
 
-    /**
-     * 获取自建歌单，如果自建歌单不存在，则返回 null。
-     */
+    //获取对应歌单
     @Nullable
     public synchronized MusicList getCustomMusicList(@NonNull String name) {
         Preconditions.checkNotNull(name);
@@ -325,9 +266,7 @@ public class MusicStore {
         return new MusicList(entity);
     }
 
-    /**
-     * 更新歌单。
-     */
+    //更新歌曲
     public synchronized void updateMusicList(@NonNull MusicList musicList) {
         Preconditions.checkNotNull(musicList);
         checkThread();
@@ -346,11 +285,7 @@ public class MusicStore {
         mMusicListEntityBox.put(musicList.musicListEntity);
     }
 
-    /**
-     * 删除歌单。
-     * <p>
-     * 不允许删除内置歌单。
-     */
+    //删除歌单
     public synchronized void deleteMusicList(@NonNull MusicList musicList) {
         Preconditions.checkNotNull(musicList);
         checkThread();
@@ -366,11 +301,7 @@ public class MusicStore {
                 .remove();
     }
 
-    /**
-     * 删除歌单。
-     * <p>
-     * 不允许删除内置歌单。
-     */
+    //按名字删除歌单
     public synchronized void deleteMusicList(@NonNull String name) {
         Preconditions.checkNotNull(name);
         checkThread();
@@ -385,12 +316,7 @@ public class MusicStore {
                 .remove();
     }
 
-    /**
-     * 重命名歌单。
-     *
-     * @param musicList 要重命名的 {@link MusicList} 对象，不能为 null
-     * @param newName   新的歌单名，最长 {@link #NAME_MAX_LENGTH}（40）个字符，超出部分会被截断，不能为 null
-     */
+    //重命名歌单
     public synchronized void renameMusicList(@NonNull MusicList musicList, @NonNull String newName) {
         Preconditions.checkNotNull(musicList);
         Preconditions.checkNotNull(newName);
@@ -408,9 +334,7 @@ public class MusicStore {
         updateMusicList(musicList);
     }
 
-    /**
-     * 获取所有自建歌单（不包括内置歌单）。
-     */
+    //获得所有歌单
     @NonNull
     public synchronized List<MusicList> getAllCustomMusicList() {
         checkThread();
@@ -461,12 +385,7 @@ public class MusicStore {
         notifyCustomMusicListUpdated(allMusicListName);
     }
 
-    /**
-     * 将多首歌曲添加到多个歌单中。
-     *
-     * @param allMusic         所有要添加的歌曲
-     * @param allMusicListName 要添加到的歌单的名称
-     */
+    //多手歌曲添加到多个歌单
     public synchronized void addToAllMusicList(@NonNull List<Music> allMusic, @NonNull List<String> allMusicListName) {
         Preconditions.checkNotNull(allMusic);
         Preconditions.checkNotNull(allMusicListName);
@@ -487,9 +406,7 @@ public class MusicStore {
         notifyCustomMusicListUpdated(allMusicListName);
     }
 
-    /**
-     * 歌曲是否是 “我的收藏”
-     */
+    //查看歌曲是否在收藏
     public synchronized boolean isFavorite(@NonNull Music music) {
         Preconditions.checkNotNull(music);
         checkThread();
@@ -497,9 +414,7 @@ public class MusicStore {
         return isFavorite(music.getId());
     }
 
-    /**
-     * 指定 musicId 的歌曲是否是 “我的收藏”
-     */
+    //按歌曲id查找是否在收藏
     public synchronized boolean isFavorite(long musicId) {
         checkThread();
         if (musicId <= 0) {
@@ -513,26 +428,22 @@ public class MusicStore {
         return builder.build().count() > 0;
     }
 
-    /**
-     * 获取 “本地音乐” 歌单。
-     */
+    //获得本地音乐歌单
     public synchronized MusicList getLocalMusicList() {
         checkThread();
         return getBuiltInMusicList(MUSIC_LIST_LOCAL_MUSIC);
     }
 
-    /**
-     * 获取 “我的收藏” 歌单。
-     */
+
+     //获取 “我的收藏” 歌单。
     @NonNull
     public synchronized MusicList getFavoriteMusicList() {
         checkThread();
         return getBuiltInMusicList(MUSIC_LIST_FAVORITE);
     }
 
-    /**
-     * 将歌曲添加到 “我的收藏” 歌单。
-     */
+
+     //将歌曲添加到 “我的收藏” 歌单。
     public synchronized void addToFavorite(@NonNull Music music) {
         Preconditions.checkNotNull(music);
         checkThread();
@@ -547,9 +458,8 @@ public class MusicStore {
         notifyFavoriteChanged();
     }
 
-    /**
-     * 将歌曲从 “我的收藏” 歌单中移除。
-     */
+
+    //将歌曲从 “我的收藏” 歌单中移除。
     public synchronized void removeFromFavorite(@NonNull Music music) {
         Preconditions.checkNotNull(music);
         checkThread();
@@ -562,13 +472,8 @@ public class MusicStore {
         }
     }
 
-    /**
-     * 切换歌曲的 “我的收藏” 状态。
-     * <p>
-     * 如果歌曲已经添加到 “我的收藏” 歌单中，则移除它，否则将其添加到 “我的收藏” 歌单中。
-     *
-     * @param music {@link Music} 对象，不能为 null
-     */
+
+     //切换歌曲的 “我的收藏” 状态。
     public synchronized void toggleFavorite(@NonNull Music music) {
         Objects.requireNonNull(music);
         checkThread();
@@ -662,12 +567,6 @@ public class MusicStore {
         mAllCustomMusicListUpdateListener.remove(listener);
     }
 
-    /**
-     * 是否是内置歌单。
-     *
-     * @param musicList {@link MusicList} 对象，不能为 null
-     * @return 如果是内置歌单，则返回 true，否则返回 false
-     */
     public boolean isBuiltInMusicList(@NonNull MusicList musicList) {
         String name = mMusicListEntityBox.query()
                 .equal(MusicListEntity_.id, musicList.getId())
@@ -679,17 +578,12 @@ public class MusicStore {
         return isBuiltInName(name);
     }
 
-    /**
-     * 指定 name 名称是否是内置歌单名。如果是，则返回 true，否则返回 false。
-     */
     public static boolean isBuiltInName(String name) {
         return name.equalsIgnoreCase(MUSIC_LIST_LOCAL_MUSIC) ||
                 name.equalsIgnoreCase(MUSIC_LIST_FAVORITE);
     }
 
-    /**
-     * 添加一条历史记录。
-     */
+    //添加一条历史记录。
     public synchronized void addHistory(@NonNull Music music) {
         Preconditions.checkNotNull(music);
         checkThread();
@@ -708,9 +602,7 @@ public class MusicStore {
         mHistoryEntityBox.put(historyEntity);
     }
 
-    /**
-     * 移除一条历史记录。
-     */
+    //移除一条历史记录。
     public synchronized void removeHistory(@NonNull HistoryEntity historyEntity) {
         Preconditions.checkNotNull(historyEntity);
         checkThread();
@@ -721,9 +613,7 @@ public class MusicStore {
                 .remove();
     }
 
-    /**
-     * 清空历史记录。
-     */
+    //清空历史记录。
     public synchronized void clearHistory() {
         checkThread();
 
@@ -732,9 +622,7 @@ public class MusicStore {
                 .remove();
     }
 
-    /**
-     * 获取所有的历史记录。
-     */
+    //获取所有的历史记录。
     @NonNull
     public synchronized List<HistoryEntity> getAllHistory() {
         checkThread();
@@ -756,29 +644,15 @@ public class MusicStore {
         mMusicBox.put(music);
     }
 
-    /**
-     * 获取指定 ID 的歌曲，如果歌曲不存在，则返回 null。
-     *
-     * @param id 歌曲 ID
-     */
+    //获取指定 ID 的歌曲，如果歌曲不存在，则返回 null。
     @Nullable
     public synchronized Music getMusic(long id) {
         checkThread();
         return mMusicBox.get(id);
     }
 
-    /**
-     * 获取所有本地音乐。
-     */
-    @NonNull
-    public synchronized List<Music> getAllMusic() {
-        checkThread();
-        return mMusicBox.getAll();
-    }
 
-    /**
-     * 获取在给定的 offset 偏移量和 limit 限制之间的所有音乐。
-     */
+    //获取在给定的 offset 偏移量和 limit 限制之间的所有音乐。
     @NonNull
     public synchronized List<Music> getAllMusic(long offset, long limit) {
         checkThread();
@@ -787,41 +661,8 @@ public class MusicStore {
                 .find(offset, limit);
     }
 
-    /**
-     * 获取数据库中包含的 {@link Music} 对象的数量。
-     */
-    public synchronized long getMusicCount() {
-        checkThread();
-        return mMusicBox.count();
-    }
 
-    /**
-     * 从数据中移除指定歌曲。
-     * <p>
-     * 注意！如果歌曲已添加到歌单中，则会把歌曲同时从所有歌单中移除。
-     *
-     * @return 如果歌曲已添加到数据库中，并且移除成功则返回 true；如果歌曲没有添加到数据库中，则返回 false
-     */
-    public synchronized boolean removeMusic(@NonNull Music music) {
-        checkThread();
-        return mMusicBox.remove(music.getId());
-    }
-
-    /**
-     * 从数据中移除指定集合中的所有歌曲。
-     *
-     * @param musics 所有要移除的歌曲。
-     */
-    public synchronized void removeMusic(Collection<Music> musics) {
-        checkThread();
-        mMusicBox.remove(musics);
-    }
-
-    /**
-     * 存储/更新多个 {@link Music} 对象到数据库中。
-     * <p>
-     * <b>注意！必须先将 {@link Music} 对象存储到数据库中，然后才能添加到歌单中，否则无法保证歌单中元素的顺序</b>
-     */
+    //存储更新多个 {@link Music} 对象到数据库中。
     public synchronized void putAllMusic(@NonNull Collection<Music> musics) {
         Preconditions.checkNotNull(musics);
         checkThread();
@@ -961,21 +802,7 @@ public class MusicStore {
                 .find();
     }
 
-    /**
-     * 获取指定歌手在给定的 offset 偏移量和 limit 限制间的全部音乐。
-     *
-     * @param artist 歌手名，不能为 null
-     * @return 在给定的 offset 偏移量和 limit 限制间的全部音乐，不为 null
-     */
-    public synchronized List<Music> getArtistAllMusic(@NonNull String artist, long offset, long limit) {
-        Preconditions.checkNotNull(artist);
-        checkThread();
 
-        return mMusicBox.query()
-                .equal(Music_.artist, artist, QueryBuilder.StringOrder.CASE_SENSITIVE)
-                .build()
-                .find(offset, limit);
-    }
 
     /**
      * 获取指定专辑的全部音乐。
@@ -992,22 +819,6 @@ public class MusicStore {
                 .equal(Music_.album, album, QueryBuilder.StringOrder.CASE_SENSITIVE)
                 .build()
                 .find();
-    }
-
-    /**
-     * 获取指定专辑在给定的 offset 偏移量和 limit 限制间的全部音乐。
-     *
-     * @param album 专辑名，不能为 null
-     * @return 在给定的 offset 偏移量和 limit 限制间的全部音乐，不为 null
-     */
-    public synchronized List<Music> getAlbumAllMusic(@NonNull String album, long offset, long limit) {
-        Preconditions.checkNotNull(album);
-        checkThread();
-
-        return mMusicBox.query()
-                .equal(Music_.album, album, QueryBuilder.StringOrder.CASE_SENSITIVE)
-                .build()
-                .find(offset, limit);
     }
 
     @NonNull

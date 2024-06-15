@@ -134,7 +134,13 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1" />
                 </LinearLayout>
-
+                <Button
+                    android:id="@+id/btnStartSearch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Start Search"
+                    android:layout_centerInParent="true"
+                    android:onClick="startSearchActivity"/>
                 <Space
                     android:layout_width="0dp"
                     android:layout_height="20dp" />

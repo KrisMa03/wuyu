@@ -4,8 +4,11 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
+import android.util.TypedValue;
+import android.widget.RemoteViews;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,7 +37,6 @@ public class AppPlayerService extends PlayerService {
     @Override
     public void onCreate() {
         super.onCreate();
-
         setMaxIDLETime(5);
         mMusicStore = MusicStore.getInstance();
     }
@@ -66,7 +68,6 @@ public class AppPlayerService extends PlayerService {
         private FavoriteObserver mFavoriteObserver;
         private PendingIntent mToggleFavorite;
         private PendingIntent mSwitchPlayMode;
-
         private PendingIntent mContentIntent;
 
         @Override
@@ -149,7 +150,7 @@ public class AppPlayerService extends PlayerService {
             Context context = getContext();
             BitmapDrawable drawable = (BitmapDrawable) ResourcesCompat.getDrawable(
                     context.getResources(),
-                    R.mipmap.ic_notif_default_icon,
+                    R.drawable.ic_notification,
                     context.getTheme());
 
             if (drawable == null) {
@@ -162,29 +163,27 @@ public class AppPlayerService extends PlayerService {
         @Override
         protected void onPlayingMusicItemChanged(@NonNull MusicItem musicItem) {
             super.onPlayingMusicItemChanged(musicItem);
-
             mFavoriteObserver.setMusicItem(getPlayingMusicItem());
         }
 
         private void addToggleFavorite(NotificationCompat.Builder builder) {
             if (mFavoriteObserver.isFavorite()) {
-                builder.addAction(R.mipmap.ic_notif_favorite_true, "favorite", mToggleFavorite);
+                builder.addAction(0, "favorite", mToggleFavorite);
             } else {
-                builder.addAction(R.mipmap.ic_notif_favorite_false, "don't favorite", mToggleFavorite);
+                builder.addAction(0, "don't favorite", mToggleFavorite);
             }
         }
 
         private void addSkipToPrevious(NotificationCompat.Builder builder) {
-            builder.addAction(R.mipmap.ic_notif_skip_to_previous, "skip to previous", doSkipToPrevious());
+            builder.addAction(0, "skip to previous", doSkipToPrevious());
         }
 
         private void addPlayPause(NotificationCompat.Builder builder) {
-            int iconId = isPlayingState() ? R.mipmap.ic_notif_pause : R.mipmap.ic_notif_play;
-            builder.addAction(iconId, "play pause", doPlayPause());
+            builder.addAction(0, "play pause", doPlayPause());
         }
 
         private void addSkipToNext(NotificationCompat.Builder builder) {
-            builder.addAction(R.mipmap.ic_notif_skip_to_next, "skip to next", doSkipToNext());
+            builder.addAction(0, "skip to next", doSkipToNext());
         }
 
         private void addSwitchPlayMode(NotificationCompat.Builder builder) {
@@ -199,6 +198,61 @@ public class AppPlayerService extends PlayerService {
                     builder.addAction(R.mipmap.ic_notif_play_mode_shuffle, "sequential", mSwitchPlayMode);
                     break;
             }
+            builder.addAction(0, "switch play mode", mSwitchPlayMode);
+        }
+
+        @NonNull
+        @Override
+        public android.app.Notification onCreateNotification() {
+            RemoteViews customView = new RemoteViews(getContext().getPackageName(), android.R.layout.simple_list_item_1);
+
+            // 设置自定义布局中的控件
+            customView.setTextViewText(android.R.id.text1, "Song Title - Artist Name");
+
+            // 美化布局
+            customView.setTextColor(android.R.id.text1, Color.WHITE);
+            customView.setInt(android.R.id.text1, "setBackgroundColor", Color.DKGRAY);
+            customView.setTextViewTextSize(android.R.id.text1, TypedValue.COMPLEX_UNIT_SP, 16);
+
+            androidx.media.app.NotificationCompat.MediaStyle mediaStyle =
+                    new androidx.media.app.NotificationCompat.MediaStyle()
+                            .setMediaSession(getMediaSession().getSessionToken());
+
+            onBuildMediaStyle(mediaStyle);
+
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext(), CHANNEL_ID)
+                    .setSmallIcon(getSmallIconId())
+                    .setCustomContentView(customView)
+                    .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+                    .setPriority(NotificationCompat.PRIORITY_LOW)
+                    .setShowWhen(false)
+                    .setAutoCancel(false)
+                    .setStyle(mediaStyle)
+                    .setContentIntent(mContentIntent);
+
+            onBuildNotification(builder);
+
+            return builder.build();
+        }
+
+        @NonNull
+        @Override
+        public android.app.Notification onCreatePlaceHolderNotification(String hint) {
+            RemoteViews customView = new RemoteViews(getContext().getPackageName(), android.R.layout.simple_list_item_1);
+
+            // 设置自定义布局中的控件
+            customView.setTextViewText(android.R.id.text1, hint);
+
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext(), CHANNEL_ID)
+                    .setSmallIcon(getSmallIconId())
+                    .setCustomContentView(customView)
+                    .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+                    .setPriority(NotificationCompat.PRIORITY_LOW)
+                    .setShowWhen(false)
+                    .setAutoCancel(false)
+                    .setContentIntent(mContentIntent);
+
+            return builder.build();
         }
     }
 }
