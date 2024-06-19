@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#F1F5F8"
-    tools:context="snow.music.activity.detail.musiclist.MusicListDetailActivity">
+    tools:context="butterfly.music.activity.detail.musiclist.MusicListDetailActivity">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -83,7 +83,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainer"
-        android:name="snow.music.fragment.battombar.BottomBarFragment"
+        android:name="butterfly.music.fragment.battombar.BottomBarFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

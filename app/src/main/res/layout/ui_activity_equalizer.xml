@@ -7,7 +7,7 @@
 
         <variable
             name="equalizerViewModel"
-            type="snow.player.ui.equalizer.EqualizerViewModel" />
+            type="butterfly.player.ui.equalizer.EqualizerViewModel" />
 
     </data>
 
@@ -62,7 +62,7 @@
 
         </FrameLayout>
 
-        <snow.player.ui.widget.BandChartView
+        <butterfly.player.ui.widget.BandChartView
             android:id="@+id/bandChart"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -108,7 +108,7 @@
 
         </FrameLayout>
 
-        <snow.player.ui.widget.EqualizerBandView
+        <butterfly.player.ui.widget.EqualizerBandView
             android:id="@+id/equalizerBands"
             android:layout_width="match_parent"
             android:layout_height="0dp"

@@ -7,7 +7,7 @@
 
         <variable
             name="navViewModel"
-            type="snow.music.activity.navigation.NavigationViewModel" />
+            type="butterfly.music.activity.navigation.NavigationViewModel" />
     </data>
 
     <LinearLayout
@@ -49,7 +49,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/search"
+                    android:text="本地搜索"
                     android:textColor="@color/grey_600" />
 
             </LinearLayout>
@@ -64,481 +64,503 @@
             android:orientation="vertical">
 
             <Space
-                android:layout_width="0dp"
-                android:layout_height="16dp" />
+                android:layout_width="wrap_content"
+                android:layout_height="11dp" />
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#F1F5F8"
-                android:orientation="vertical"
-                >
-
-                <LinearLayout
-                    android:layout_width="380dp"
-                    android:layout_height="144dp"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/round_corners2"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/imageView"
-                        android:layout_width="47dp"
-                        android:layout_height="99dp"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/touxiang" />
-
-                    <LinearLayout
-                        android:layout_width="23dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="20dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:singleLine="true"
-                                android:text="jouska"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
-
-                            <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="match_parent"
-                                android:scaleType="centerInside"
-                                app:srcCompat="@drawable/logout_24" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:singleLine="true"
-                            android:text="Lv5"
-                            android:textColor="@color/colorSecondaryText"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                    <Space
-                        android:layout_width="61dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" />
-                </LinearLayout>
-                <Button
-                    android:id="@+id/btnStartSearch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Start Search"
-                    android:layout_centerInParent="true"
-                    android:onClick="startSearchActivity"/>
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="20dp" />
-
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="99dp"
-                    android:baselineAligned="false"
-                    android:orientation="horizontal"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp">
-
-                    <LinearLayout
-                        android:id="@+id/itemLocalMusic"
-                        android:layout_width="0dp"
-                        android:layout_height="80dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_list_item"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:gravity="center"
-                        android:onClick="@{navViewModel::navigateToLocalMusic}"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:contentDescription="@string/des_local_music"
-                            android:scaleType="centerInside"
-                            app:srcCompat="@drawable/ic_local_music" />
-
-                        <Space
-                            android:layout_width="0dp"
-                            android:layout_height="8dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="本地音乐"
-                            android:textSize="17sp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/itemFavorite"
-                        android:layout_width="0dp"
-                        android:layout_height="80dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_list_item"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:gravity="center"
-                        android:onClick="@{navViewModel::navigateToAlbum}"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:contentDescription="喜欢"
-                            android:scaleType="centerInside"
-                            app:srcCompat="@drawable/ic_album_menu" />
-
-                        <Space
-                            android:layout_width="0dp"
-                            android:layout_height="8dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="专辑"
-                            android:textSize="17sp" />
-
-                    </LinearLayout>
-
-                    <!-- New Icon Placeholder -->
-                    <LinearLayout
-                        android:id="@+id/itemNewIcon"
-                        android:layout_width="0dp"
-                        android:layout_height="80dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_list_item"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:gravity="center"
-                        android:onClick="@{navViewModel::navigateToArtistBrowser}"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:contentDescription="123"
-                            android:scaleType="centerInside"
-                            app:srcCompat="@drawable/ic_artist_menu" />
-
-                        <Space
-                            android:layout_width="0dp"
-                            android:layout_height="8dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="歌手"
-                            android:textSize="17sp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/itemMusicList"
-                        android:layout_width="0dp"
-                        android:layout_height="80dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_list_item"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:gravity="center"
-                        android:onClick="@{navViewModel::navigateToMusicListBrowser}"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:contentDescription="@string/des_music_list"
-                            android:scaleType="centerInside"
-                            app:srcCompat="@drawable/ic_music_list" />
-
-                        <Space
-                            android:layout_width="0dp"
-                            android:layout_height="8dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="我的歌单"
-                            android:textSize="17sp" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="6dp" />
-
-                <LinearLayout
-                    android:layout_width="380dp"
-                    android:layout_height="183dp"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/rounded_corners"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent"
+                    android:background="#F1F5F8"
+                    android:orientation="vertical"
+                    >
 
                     <LinearLayout
                         android:layout_width="380dp"
-                        android:layout_height="60dp"
-                        android:layout_marginBottom="0dp"
-                        android:background="@drawable/rounded_corners"
+                        android:layout_height="144dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/round_corners2"
                         android:gravity="center"
-                        android:onClick="@{navViewModel::navigateToHistory}"
-                        android:orientation="horizontal"
-                        android:paddingTop="0dp">
-                        <Space
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="最近播放"
-                            android:textSize="17sp" />
-
-                        <View
-                            android:layout_width="221dp"
-                            android:layout_height="12dp"
-                            android:layout_weight="1" />
-                        <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:contentDescription="@string/des_history"
-                            android:scaleType="centerInside"
-                            app:srcCompat="@drawable/ic_right" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="102dp"
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:id="@+id/imageView2"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:id="@+id/imageView"
+                            android:layout_width="47dp"
+                            android:layout_height="99dp"
                             android:layout_weight="1"
-                            tools:srcCompat="@tools:sample/avatars" />
+                            app:srcCompat="@drawable/touxiang" />
 
-                        <ImageView
-                            android:id="@+id/imageView4"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                        <LinearLayout
+                            android:layout_width="23dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            tools:srcCompat="@tools:sample/avatars" />
+                            android:orientation="vertical">
 
-                        <ImageView
-                            android:id="@+id/imageView5"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            tools:srcCompat="@tools:sample/avatars" />
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="20dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:singleLine="true"
+                                    android:text="jouska"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+
+                                <ImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerInside"
+                                    app:srcCompat="@drawable/logout_24" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:singleLine="true"
+                                android:text="Lv5"
+                                android:textColor="@color/colorSecondaryText"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <Space
+                            android:layout_width="61dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
                     </LinearLayout>
 
                     <Space
                         android:layout_width="wrap_content"
-                        android:layout_height="10dp" />
-
-                </LinearLayout>
-
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp" />
-
-                <LinearLayout
-                    android:layout_width="380dp"
-                    android:layout_height="290dp"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/rounded_corners"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:padding="0dp">
+                        android:layout_height="15dp" />
                     <LinearLayout
-                        android:layout_width="380dp"
-                        android:layout_height="60dp"
-                        android:layout_marginBottom="0dp"
-                        android:background="@drawable/rounded_corners"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/round_corners2"
+                        android:baselineAligned="false"
                         android:gravity="center"
-                        android:onClick="@{navViewModel::navigateToFavorite}"
-                        android:orientation="horizontal"
-                        android:paddingTop="0dp">
-                        <Space
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1" />
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="我的收藏"
-                            android:textSize="17sp" />
-
-                        <View
-                            android:layout_width="221dp"
-                            android:layout_height="12dp"
-                            android:layout_weight="1" />
                         <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:contentDescription="@string/des_history"
+                            android:layout_width="25dp"
+                            android:layout_height="match_parent"
                             android:scaleType="centerInside"
-                            app:srcCompat="@drawable/ic_right" />
+                            app:srcCompat="@drawable/ic_search" />
+
+                        <Button
+                            android:id="@+id/btnStartSearch"
+                            android:layout_width="61dp"
+                            android:layout_height="wrap_content"
+                            android:background="#ffffff"
+                            android:onClick="startSearchActivity"
+                            android:text="网络下载" />
+
                     </LinearLayout>
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="20dp" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:paddingTop="0dp">
+                        android:layout_height="99dp"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp">
 
                         <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:paddingBottom="8dp">
-
-                            <Space
-                                android:layout_width="15dp"
-                                android:layout_height="10dp"
-                                android:layout_weight="0" />
+                            android:id="@+id/itemLocalMusic"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_list_item"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center"
+                            android:onClick="@{navViewModel::navigateToLocalMusic}"
+                            android:orientation="vertical">
 
                             <ImageView
-                                android:id="@+id/favoriteImageView1"
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_marginEnd="16dp"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/rounded_corners"/>
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:contentDescription="@string/des_local_music"
+                                android:scaleType="centerInside"
+                                app:srcCompat="@drawable/ic_local_music" />
 
-                            <LinearLayout
+                            <Space
                                 android:layout_width="0dp"
+                                android:layout_height="8dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
+                                android:text="本地音乐"
+                                android:textSize="17sp" />
 
-                                <TextView
-                                    android:id="@+id/favoriteTitle1"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Song Title"
-                                    android:textSize="16sp"
-                                    android:textColor="@android:color/black"/>
-
-                                <TextView
-                                    android:id="@+id/favoriteArtistAlbum1"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Artist - Album"
-                                    android:textSize="14sp"
-                                    android:textColor="@android:color/darker_gray"/>
-                            </LinearLayout>
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:paddingBottom="8dp">
-                            <Space
-                                android:layout_width="15dp"
-                                android:layout_height="10dp"
-                                android:layout_weight="0" />
+                            android:id="@+id/itemFavorite"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_list_item"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center"
+                            android:onClick="@{navViewModel::navigateToAlbum}"
+                            android:orientation="vertical">
+
                             <ImageView
-                                android:id="@+id/favoriteImageView2"
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_marginEnd="16dp"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/rounded_corners"/>
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:contentDescription="喜欢"
+                                android:scaleType="centerInside"
+                                app:srcCompat="@drawable/ic_album_menu" />
 
-                            <LinearLayout
+                            <Space
                                 android:layout_width="0dp"
+                                android:layout_height="8dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
+                                android:text="专辑"
+                                android:textSize="17sp" />
 
-                                <TextView
-                                    android:id="@+id/favoriteTitle2"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Song Title"
-                                    android:textSize="16sp"
-                                    android:textColor="@android:color/black"/>
+                        </LinearLayout>
 
-                                <TextView
-                                    android:id="@+id/favoriteArtistAlbum2"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Artist - Album"
-                                    android:textSize="14sp"
-                                    android:textColor="@android:color/darker_gray"/>
-                            </LinearLayout>
+                        <!-- New Icon Placeholder -->
+                        <LinearLayout
+                            android:id="@+id/itemNewIcon"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_list_item"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center"
+                            android:onClick="@{navViewModel::navigateToArtistBrowser}"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:contentDescription="123"
+                                android:scaleType="centerInside"
+                                app:srcCompat="@drawable/ic_artist_menu" />
+
+                            <Space
+                                android:layout_width="0dp"
+                                android:layout_height="8dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="歌手"
+                                android:textSize="17sp" />
+
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:paddingBottom="8dp">
-                            <Space
-                                android:layout_width="15dp"
-                                android:layout_height="10dp"
-                                android:layout_weight="0" />
+                            android:id="@+id/itemMusicList"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_list_item"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center"
+                            android:onClick="@{navViewModel::navigateToMusicListBrowser}"
+                            android:orientation="vertical">
+
                             <ImageView
-                                android:id="@+id/favoriteImageView3"
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_marginEnd="16dp"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/rounded_corners"/>
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:contentDescription="@string/des_music_list"
+                                android:scaleType="centerInside"
+                                app:srcCompat="@drawable/ic_music_list" />
 
-                            <LinearLayout
+                            <Space
                                 android:layout_width="0dp"
+                                android:layout_height="8dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
+                                android:text="我的歌单"
+                                android:textSize="17sp" />
 
-                                <TextView
-                                    android:id="@+id/favoriteTitle3"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Song Title"
-                                    android:textSize="16sp"
-                                    android:textColor="@android:color/black"/>
-
-                                <TextView
-                                    android:id="@+id/favoriteArtistAlbum3"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Artist - Album"
-                                    android:textSize="14sp"
-                                    android:textColor="@android:color/darker_gray"/>
-                            </LinearLayout>
                         </LinearLayout>
 
                     </LinearLayout>
 
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="6dp" />
+
+                    <LinearLayout
+                        android:layout_width="380dp"
+                        android:layout_height="183dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/rounded_corners"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="380dp"
+                            android:layout_height="60dp"
+                            android:layout_marginBottom="0dp"
+                            android:background="@drawable/rounded_corners"
+                            android:gravity="center"
+                            android:onClick="@{navViewModel::navigateToHistory}"
+                            android:orientation="horizontal"
+                            android:paddingTop="0dp">
+                            <Space
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="最近播放"
+                                android:textSize="17sp" />
+
+                            <View
+                                android:layout_width="221dp"
+                                android:layout_height="12dp"
+                                android:layout_weight="1" />
+                            <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:contentDescription="@string/des_history"
+                                android:scaleType="centerInside"
+                                app:srcCompat="@drawable/ic_right" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="102dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imageView2"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                tools:srcCompat="@tools:sample/avatars" />
+
+                            <ImageView
+                                android:id="@+id/imageView4"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                tools:srcCompat="@tools:sample/avatars" />
+
+                            <ImageView
+                                android:id="@+id/imageView5"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                tools:srcCompat="@tools:sample/avatars" />
+                        </LinearLayout>
+
+                        <Space
+                            android:layout_width="wrap_content"
+                            android:layout_height="10dp" />
+
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp" />
+
+                    <LinearLayout
+                        android:layout_width="380dp"
+                        android:layout_height="290dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/rounded_corners"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:padding="0dp">
+                        <LinearLayout
+                            android:layout_width="380dp"
+                            android:layout_height="60dp"
+                            android:layout_marginBottom="0dp"
+                            android:background="@drawable/rounded_corners"
+                            android:gravity="center"
+                            android:onClick="@{navViewModel::navigateToFavorite}"
+                            android:orientation="horizontal"
+                            android:paddingTop="0dp">
+                            <Space
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="我的收藏"
+                                android:textSize="17sp" />
+
+                            <View
+                                android:layout_width="221dp"
+                                android:layout_height="12dp"
+                                android:layout_weight="1" />
+                            <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:contentDescription="@string/des_history"
+                                android:scaleType="centerInside"
+                                app:srcCompat="@drawable/ic_right" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingTop="0dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:paddingBottom="8dp">
+
+                                <Space
+                                    android:layout_width="15dp"
+                                    android:layout_height="10dp"
+                                    android:layout_weight="0" />
+
+                                <ImageView
+                                    android:id="@+id/favoriteImageView1"
+                                    android:layout_width="60dp"
+                                    android:layout_height="60dp"
+                                    android:layout_marginEnd="16dp"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/rounded_corners"/>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/favoriteTitle1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Song Title"
+                                        android:textSize="16sp"
+                                        android:textColor="@android:color/black"/>
+
+                                    <TextView
+                                        android:id="@+id/favoriteArtistAlbum1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Artist - Album"
+                                        android:textSize="14sp"
+                                        android:textColor="@android:color/darker_gray"/>
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:paddingBottom="8dp">
+                                <Space
+                                    android:layout_width="15dp"
+                                    android:layout_height="10dp"
+                                    android:layout_weight="0" />
+                                <ImageView
+                                    android:id="@+id/favoriteImageView2"
+                                    android:layout_width="60dp"
+                                    android:layout_height="60dp"
+                                    android:layout_marginEnd="16dp"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/rounded_corners"/>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/favoriteTitle2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Song Title"
+                                        android:textSize="16sp"
+                                        android:textColor="@android:color/black"/>
+
+                                    <TextView
+                                        android:id="@+id/favoriteArtistAlbum2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Artist - Album"
+                                        android:textSize="14sp"
+                                        android:textColor="@android:color/darker_gray"/>
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:paddingBottom="8dp">
+                                <Space
+                                    android:layout_width="15dp"
+                                    android:layout_height="10dp"
+                                    android:layout_weight="0" />
+                                <ImageView
+                                    android:id="@+id/favoriteImageView3"
+                                    android:layout_width="60dp"
+                                    android:layout_height="60dp"
+                                    android:layout_marginEnd="16dp"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/rounded_corners"/>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/favoriteTitle3"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Song Title"
+                                        android:textSize="16sp"
+                                        android:textColor="@android:color/black"/>
+
+                                    <TextView
+                                        android:id="@+id/favoriteArtistAlbum3"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Artist - Album"
+                                        android:textSize="14sp"
+                                        android:textColor="@android:color/darker_gray"/>
+                                </LinearLayout>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+
                 </LinearLayout>
-
-
-
-            </LinearLayout>
 
             </ScrollView>
         </LinearLayout>
@@ -574,7 +596,7 @@
                         android:padding="4dp"
                         android:contentDescription="@string/des_album_icon"
                         android:onClick="@{navViewModel.navigateToPlayer}"
-                         />
+                        />
                 </FrameLayout>
 
                 <LinearLayout
@@ -594,7 +616,7 @@
                         android:gravity="center_horizontal"
                         android:singleLine="true"
                         android:text="@{navViewModel.musicTitle}"
-                        tools:text="@string/snow_music_item_unknown_title"
+                        tools:text="@string/butterfly_music_item_unknown_title"
                         android:textSize="18sp" />
 
                     <TextView
@@ -607,7 +629,7 @@
                         android:gravity="center_horizontal"
                         android:singleLine="true"
                         android:text="@{navViewModel.secondaryText}"
-                        tools:text="@string/snow_music_item_unknown_artist"
+                        tools:text="@string/butterfly_music_item_unknown_artist"
                         android:textSize="13sp" />
 
                 </LinearLayout>

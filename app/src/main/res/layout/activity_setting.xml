@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="snow.music.activity.setting.SettingActivity">
+    tools:context="butterfly.music.activity.setting.SettingActivity">
 
     <FrameLayout
         android:layout_width="match_parent"

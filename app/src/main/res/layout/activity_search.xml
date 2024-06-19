@@ -5,7 +5,7 @@
 
         <variable
             name="searchViewModel"
-            type="snow.music.activity.search.SearchViewModel" />
+            type="butterfly.music.activity.search.SearchViewModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="#F1F5F8"
-        tools:context="snow.music.activity.search.SearchActivity">
+        tools:context="butterfly.music.activity.search.SearchActivity">
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -48,7 +48,7 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <snow.music.widget.EditTextEx
+                    <butterfly.music.widget.EditTextEx
                         android:id="@+id/etInput"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"

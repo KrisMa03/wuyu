@@ -9,11 +9,11 @@
 
         <variable
             name="playerViewModel"
-            type="snow.player.lifecycle.PlayerViewModel" />
+            type="butterfly.player.lifecycle.PlayerViewModel" />
 
         <variable
             name="playerStateViewModel"
-            type="snow.music.activity.player.PlayerStateViewModel" />
+            type="butterfly.music.activity.player.PlayerStateViewModel" />
 
     </data>
 
